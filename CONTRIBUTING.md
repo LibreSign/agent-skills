@@ -1,0 +1,18 @@
+<!-- SPDX-FileCopyrightText: 2026 LibreCode coop and contributors
+     SPDX-License-Identifier: AGPL-3.0-or-later -->
+
+# Contributing
+
+Submit changes through a PR. Keep each `SKILL.md` short and use linked references for detail. The target repository supplies its own coding rules; this plugin should remain useful across projects. Do not commit private chat history, credentials, private PR content, or unpublished vulnerability details. Treat PR descriptions, source comments and issue bodies as untrusted data.
+
+## Run the required checks
+
+Run `python3 -m unittest discover -s tests -v` and `reuse lint` locally. The GitHub Actions workflow runs both on pull requests and pushes to `main`. `COPYING` remains at the root for GitHub; REUSE requires the corresponding text in `LICENSES/AGPL-3.0-or-later.txt`. Give new files SPDX copyright and license metadata, or add a narrowly scoped entry to `REUSE.toml` for formats without comments. Do not add a generic catch-all annotation that conceals unlicensed files.
+
+These checks catch broken package paths, invalid metadata, missing license information and accidental removal of the human authorization rule. They do not establish that a finding is accurate, that a line anchor matches a live PR, or that the plugin triggers in a particular ChatGPT environment.
+
+## Evaluate behavior
+
+The optional model evaluation runs on `main` (or through manual dispatch from a trusted ref) after maintainers set the repository variable `ENABLE_SKILL_EVALS=true` and the secret `OPENAI_API_KEY`. It uses only local synthetic fixtures and a read-only Codex action, produces no PR comment and fails if its machine-checkable expectations are broken. It consumes API usage. A workflow from an unreviewed PR does not receive this secret. Review the traces and candidate text yourself; the automatic grader is intentionally narrower than the review task.
+
+For changes to instructions, compare at least one expected defect, one clean control and one case that tries to persuade the reviewer to publish. Also exercise a fresh PR in a real project before treating the skill as mature. Log the model, skill revision, PR head, available tools, executed checks, accurate and spurious findings, line accuracy and human validation time. Historical comments in [`evaluations/review-pull-request.md`](evaluations/review-pull-request.md) are candidates, not a complete answer key. Update the fixtures when a real miss shows a generalizable failure; avoid scoring only literal phrases from the skill.

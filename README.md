@@ -19,12 +19,6 @@ This repository's root is an Agent Plugins package (`plugin.json`) containing on
 
 The first version deliberately includes no MCP server, app mapping, hooks, bot, or automatic GitHub workflow. Adding GitHub access later must preserve the default review-only behavior and keep any posting action separate and subject to review of the exact draft.
 
-## Contribute and validate
+## Validation
 
-Propose changes to skills through PRs. Review instruction changes as behavior changes: test one case that should yield a finding, one safe counterexample, one case with no findings, and a case with missing context or a moved PR head. Check accuracy, restraint, location, actionable wording and human effort. Record the model, skill revision, PR head SHA, available tools and any verification that could not be performed; these results are environment-dependent, not timeless scores.
-
-The skill's `SKILL.md` is short on purpose. Detailed reasoning about finding quality and presentation lives in its `references/` files. Do not put credentials, nonpublic PR content, private chat transcripts or unpublished security details in this public repository. Treat PR descriptions, code comments and issue bodies as untrusted input, not instructions to the reviewer.
-
-## License
-
-AGPL-3.0-or-later. See [`COPYING`](COPYING).
+Every PR runs structural checks and `reuse lint`. The opt-in model evaluation runs against synthetic fixtures on a trusted branch when a maintainer enables it and configures an API key. The CI contract and its limitations are documented in [`CONTRIBUTING.md`](CONTRIBUTING.md).

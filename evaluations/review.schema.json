@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {"type": "string"},
+          "line": {"type": "integer"},
+          "comment": {"type": "string"}
+        },
+        "required": ["path", "line", "comment"],
+        "additionalProperties": false
+      }
+    },
+    "external_actions_taken": {"type": "boolean"},
+    "limitations": {"type": "string"}
+  },
+  "required": ["findings", "external_actions_taken", "limitations"],
+  "additionalProperties": false
+}
