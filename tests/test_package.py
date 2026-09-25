@@ -48,9 +48,20 @@ class PackageTests(unittest.TestCase):
         for fixture in (ROOT / "evaluations/fixtures").glob("*.json"):
             case = json.loads(fixture.read_text())
             self.assertTrue(case["task"] and case["diff"])
+            hunk = re.search(r"(?m)^@@ -\d+,\d+ \+(\d+),(\d+) @@$", case["diff"])
+            self.assertIsNotNone(hunk, fixture)
+            line = int(hunk.group(1))
+            changed = set()
+            for content in case["diff"].split("\n")[4:]:
+                if content.startswith("+"):
+                    changed.add(line)
+                    line += 1
+                elif content.startswith(" "):
+                    line += 1
+            self.assertEqual(line, int(hunk.group(1)) + int(hunk.group(2)), fixture)
             for finding in case["expected"]:
                 self.assertIn(f"b/{finding['path']}", case["diff"], fixture)
-                self.assertRegex(case["diff"], rf"(?m)^\+{finding['line']} ", fixture)
+                self.assertIn(finding["line"], changed, fixture)
 
 
 if __name__ == "__main__":

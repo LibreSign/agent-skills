@@ -1,6 +1,6 @@
 {
   "name": "missing_record",
   "task": "Review the following changed function for a production regression. The lookup contract returns None for unknown IDs. Code context and line numbers are shown below. No integration test can be executed in this fixture.",
-  "diff": "diff --git a/app/notify.py b/app/notify.py\n@@ -4,3 +4,5 @@\n 4 def notify(user_id):\n 5     user = find_user(user_id)\n+6     send_mail(user.email, 'Ready')\n 7     return True",
+  "diff": "diff --git a/app/notify.py b/app/notify.py\n--- a/app/notify.py\n+++ b/app/notify.py\n@@ -4,3 +4,4 @@\n def notify(user_id):\n     user = find_user(user_id)\n+    send_mail(user.email, 'Ready')\n     return True",
   "expected": [{"path": "app/notify.py", "line": 6}]
 }
