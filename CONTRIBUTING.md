@@ -7,7 +7,7 @@ Submit changes through a PR. Keep each `SKILL.md` short and use linked reference
 
 ## Run the required checks
 
-Run `python3 -m unittest discover -s tests -v` and `reuse lint` locally. The GitHub Actions workflow runs both on pull requests and pushes to `main`. `COPYING` remains at the root for GitHub; REUSE requires the corresponding text in `LICENSES/AGPL-3.0-or-later.txt`. Give new files SPDX copyright and license metadata, or add a narrowly scoped entry to `REUSE.toml` for formats without comments. Do not add a generic catch-all annotation that conceals unlicensed files.
+Run `python3 -m unittest discover -s tests -v` and `reuse lint` locally. The GitHub Actions workflow runs both on pull requests and pushes to `main`. `LICENSE` contains the full text at the project root; REUSE requires the corresponding text in `LICENSES/AGPL-3.0-or-later.txt`. Give new files SPDX copyright and license metadata, or add a narrowly scoped entry to `REUSE.toml` for formats without comments. Do not add a generic catch-all annotation that conceals unlicensed files.
 
 These checks catch broken package paths, invalid metadata, missing license information and accidental removal of the human authorization rule. They do not establish that a finding is accurate, that a line anchor matches a live PR, or that the plugin triggers in a particular ChatGPT environment.
 
