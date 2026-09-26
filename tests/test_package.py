@@ -3,6 +3,7 @@
 
 """Fast packaging checks; model behavior is evaluated separately."""
 
+import hashlib
 import json
 import re
 import unittest
@@ -13,6 +14,17 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class PackageTests(unittest.TestCase):
+    def test_complete_unmodified_root_license(self):
+        # Full text from github/choosealicense.com/_licenses/agpl-3.0.txt
+        # (excluding its Jekyll frontmatter), not a project-specific summary.
+        root_license = (ROOT / "LICENSE").read_bytes()
+        reuse_license = (ROOT / "LICENSES/AGPL-3.0-or-later.txt").read_bytes()
+        self.assertEqual(root_license, reuse_license)
+        self.assertEqual(
+            hashlib.sha256(root_license).hexdigest(),
+            "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+        )
+
     def test_manifest_and_marketplace_resolve_the_same_plugin(self):
         manifest = json.loads((ROOT / "plugin.json").read_text())
         marketplace = json.loads((ROOT / ".agents/plugins/marketplace.json").read_text())
