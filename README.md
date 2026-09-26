@@ -21,4 +21,4 @@ The first version deliberately includes no MCP server, app mapping, hooks, bot, 
 
 ## Validation
 
-Every PR runs structural checks and `reuse lint`. The opt-in model evaluation runs against synthetic fixtures on a trusted branch when a maintainer enables it and configures an API key. The CI contract and its limitations are documented in [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Every PR runs structural checks and `reuse lint` without an API key. The model evaluation is optional and runs on `main` only if enabled and an API key is configured; otherwise it skips the model without failing the workflow. The CI contract and its limitations are documented in [`CONTRIBUTING.md`](CONTRIBUTING.md).

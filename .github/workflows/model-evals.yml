@@ -16,8 +16,25 @@ permissions:
   contents: read
 
 jobs:
+  preflight:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    outputs:
+      enabled: ${{ steps.check.outputs.enabled }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Check opt-in and API key
+        id: check
+        env:
+          ENABLE_SKILL_EVALS: ${{ vars.ENABLE_SKILL_EVALS }}
+          MODEL_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: bash evaluations/preflight.sh
+
   review-fixtures:
-    if: github.ref == 'refs/heads/main' && vars.ENABLE_SKILL_EVALS == 'true'
+    needs: preflight
+    if: needs.preflight.outputs.enabled == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

@@ -7,6 +7,8 @@ import hashlib
 import json
 import os
 import re
+import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -75,8 +77,39 @@ class PackageTests(unittest.TestCase):
         self.assertIn("branches: [main]", workflow)
         self.assertIn("- 'AGENTS.md'", workflow)
         self.assertIn("- 'references/**'", workflow)
-        self.assertIn("if: github.ref == 'refs/heads/main' && vars.ENABLE_SKILL_EVALS == 'true'", workflow)
+        self.assertIn("if: github.ref == 'refs/heads/main'", workflow)
+        self.assertIn("needs: preflight", workflow)
+        self.assertIn("if: needs.preflight.outputs.enabled == 'true'", workflow)
         self.assertNotIn("workflow_dispatch:", workflow)
+
+    def test_model_evaluation_preflight_skips_without_opt_in_or_key(self):
+        cases = (
+            ("", "", "opt-in disabled", False),
+            ("true", "", "OPENAI_API_KEY is not configured", False),
+            ("true", "test-only-key", "three synthetic fixtures", True),
+        )
+        for opt_in, key, summary_text, should_run in cases:
+            with self.subTest(opt_in=opt_in, key_configured=bool(key)):
+                with tempfile.TemporaryDirectory() as directory:
+                    output = Path(directory) / "output"
+                    summary = Path(directory) / "summary"
+                    env = {
+                        **os.environ,
+                        "ENABLE_SKILL_EVALS": opt_in,
+                        "MODEL_API_KEY": key,
+                        "GITHUB_OUTPUT": str(output),
+                        "GITHUB_STEP_SUMMARY": str(summary),
+                    }
+                    result = subprocess.run(
+                        ["bash", str(ROOT / "evaluations/preflight.sh")],
+                        env=env, capture_output=True, text=True, check=True,
+                    )
+                    self.assertIn(summary_text, summary.read_text())
+                    self.assertEqual(output.read_text() if output.exists() else "", "enabled=true\n" if should_run else "")
+                    if opt_in == "true" and not key:
+                        self.assertIn("::warning::", result.stdout)
+                    if key:
+                        self.assertNotIn(key, result.stdout)
 
     def test_synthetic_answers_anchor_to_changed_lines(self):
         for fixture in (ROOT / "evaluations/fixtures").glob("*.json"):
