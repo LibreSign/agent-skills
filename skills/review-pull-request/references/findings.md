@@ -9,6 +9,8 @@ An issue is ready for a firm comment when the review can describe the condition,
 
 Tests are also code to review. Inspect whether a test would fail for the wrong behavior and whether it asserts an observable result rather than coupling to incidental call counts. Mutation scores and coverage percentages are clues, not goals that justify brittle tests. End-to-end coverage should follow important user or system workflows, not mirror source filenames. A passing CI job does not prove that a missing scenario is covered; an intermittent failure must be investigated before blaming the PR.
 
+Let configured linters, formatters and static checks report routine deterministic violations. Verify that they actually run on the affected files and that required checks pass; avoid duplicating their ordinary annotations as PR comments. Investigate a check that is disabled, skipped or unable to cover the change. Security scanners likewise provide leads, not clearance: manually test relevant authorization, data flow and business logic when those paths change. Escalate a proven material risk even if a linter stays green; never disclose sensitive exploit details in a public draft.
+
 ## Priority and scope
 
 | Classification | Use when | Response |
