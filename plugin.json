@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "libresign-agent-skills",
-  "version": "0.1.0",
-  "description": "Reusable, human-reviewed workflows for free software projects, starting with pull request review.",
+  "version": "0.2.0",
+  "description": "Reusable workflows for reviewing pull requests and planning issues and epics in free software projects.",
   "author": {
     "name": "LibreCode coop and contributors"
   },
@@ -12,14 +12,15 @@
     "com.openai": {
       "interface": {
         "displayName": "LibreSign Agent Skills",
-        "shortDescription": "Review pull requests with a human publication step",
-        "longDescription": "Investigate code changes across repositories, verify candidate findings, and prepare precise review comments for a human to check and publish.",
+        "shortDescription": "Review pull requests and plan issues with human oversight",
+        "longDescription": "Investigate code changes and prepare review comments; plan actionable issues and epics with verified relationships for a human to check before publication.",
         "developerName": "LibreCode coop and contributors",
         "category": "Productivity",
         "capabilities": ["Read"],
         "defaultPrompt": [
           "Review this pull request and prepare comments for me to check: ",
-          "Re-review this pull request after the latest changes: "
+          "Re-review this pull request after the latest changes: ",
+          "Draft issues and an epic for this project, including real dependencies: "
         ]
       }
     }
