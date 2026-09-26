@@ -5,6 +5,7 @@
 
 import hashlib
 import json
+import os
 import re
 import unittest
 from pathlib import Path
@@ -55,6 +56,19 @@ class PackageTests(unittest.TestCase):
         self.assertIn("Do not post comments or reviews", text)
         self.assertIn("expressly authorize", text)
         self.assertIn("Recheck the target SHA and line anchors", text)
+
+    def test_every_skill_loads_shared_trust_boundary(self):
+        policy = ROOT / "references/untrusted-input.md"
+        policy_text = policy.read_text()
+        for required in ("lower-trust", "trusted base revision", "credentials", "permissions", "interacting person"):
+            self.assertIn(required, policy_text)
+        skills = list((ROOT / "skills").glob("*/SKILL.md"))
+        self.assertTrue(skills)
+        for skill in skills:
+            relative = os.path.relpath(policy, skill.parent)
+            text = skill.read_text()
+            self.assertIn(f"]({relative})", text, skill)
+            self.assertRegex(text, r"(?i)before (reading|processing).*content", skill)
 
     def test_synthetic_answers_anchor_to_changed_lines(self):
         for fixture in (ROOT / "evaluations/fixtures").glob("*.json"):

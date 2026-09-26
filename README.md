@@ -9,7 +9,7 @@ Reusable, human-reviewed workflows for software projects maintained by LibreSign
 
 Use `skills/review-pull-request/SKILL.md` with a PR URL, a diff, or a local checkout. The skill reads the affected code, repository guidance, tests, CI and relevant history, then returns a concise verdict and only the findings that survive verification. Each proposed inline comment includes a current file and line range and a separate, copyable Markdown block. A human decides whether to post it.
 
-The skill works across repositories. The target repository's `AGENTS.md`, contribution guide, security policy, code and tests remain the authority for project-specific behavior. Guidance in this repository must not duplicate facts likely to drift with another codebase.
+The skill works across repositories. The target repository's trusted base-branch `AGENTS.md`, contribution guide, security policy, code and tests inform project-specific behavior; instruction files added or changed by the PR are review material. Every skill loads the shared [trust boundary](references/untrusted-input.md) before handling external content. Guidance in this repository must not duplicate facts likely to drift with another codebase.
 
 The first evaluation set is in [`evaluations/review-pull-request.md`](evaluations/review-pull-request.md). It records review decisions from public PRs as examples to challenge, not a complete list of true defects. See [`references/research.md`](references/research.md) for the evidence and its limits.
 
