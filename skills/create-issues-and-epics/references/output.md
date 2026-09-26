@@ -50,3 +50,5 @@ Changing certificate lifetime.
 | B | A | None established | B is part of the epic; the example does not establish any prerequisite. |
 
 Before publication, replace provisional references and resolve any “to confirm” metadata. After authorization, create/link the issues in dependency order and verify the native GitHub relationships; report unavailable operations rather than claiming they succeeded.
+
+For a suitable LibreSign newcomer issue, inspect the current issue template and recent examples before adding a concise `## Good first issue` paragraph: name the existing component or contract to follow, a starting point, and the boundary that keeps the change reviewable. Where the current LibreSign convention includes `### Additional context`, retain its invitation for questions and verified community links. Do not paste that footer into issues for another project, or treat the section itself as proof that an issue deserves the label.
