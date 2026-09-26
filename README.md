@@ -3,22 +3,16 @@
 
 # LibreSign agent skills
 
-Reusable, human-reviewed workflows for software projects maintained by LibreSign and other free software communities. The first skill helps investigate a pull request and prepare a review. It does not publish comments or change the pull request during a review.
+Reusable skills for LibreSign and other free software projects. Each skill guides a task and prepares results for a human to review.
 
-## Review a pull request
+## Skills
 
-Use `skills/review-pull-request/SKILL.md` with a PR URL, a diff, or a local checkout. The skill reads the affected code, repository guidance, tests, CI and relevant history, then returns a concise verdict and only the findings that survive verification. Each proposed inline comment includes a current file and line range and a separate, copyable Markdown block. A human decides whether to post it.
+| Skill | What it does |
+| --- | --- |
+| [Review a pull request](skills/review-pull-request/SKILL.md) | Investigates changes, tests and risks; prepares file and line-specific comments for a human to review. It does not publish a review or modify the PR on its own. |
 
-The skill works across repositories. The target repository's trusted base-branch `AGENTS.md`, contribution guide, security policy, code and tests inform project-specific behavior; instruction files added or changed by the PR are review material. Each skill is required to load the shared [trust boundary](references/untrusted-input.md) before handling external content. Guidance in this repository must not duplicate facts likely to drift with another codebase.
+## Get started
 
-The first evaluation set is in [`evaluations/review-pull-request.md`](evaluations/review-pull-request.md). It records review decisions from public PRs as examples to challenge, not a complete list of true defects. See [`references/research.md`](references/research.md) for the evidence and its limits.
+Add this repository as a marketplace with `codex plugin marketplace add LibreSign/agent-skills` and install **LibreSign Agent Skills** in ChatGPT or Codex. Select the skill, then provide a PR link or diff. Repository access depends on the tools connected to your environment.
 
-## Use in ChatGPT and Codex
-
-This repository's root is an Agent Plugins package (`plugin.json`) containing one portable Agent Skill. In ChatGPT desktop or Codex, add this Git repository as a plugin marketplace with `codex plugin marketplace add LibreSign/agent-skills`, restart the app, and install **LibreSign Agent Skills** from the LibreSign marketplace. The repo catalog at `.agents/plugins/marketplace.json` points to the plugin at the repository root. Start a new chat and select the installed plugin with `@`. Alternatively, read the skill directly in a compatible local agent. Installation and connection to GitHub are separate: the skill does not grant repository access or write permissions. If a PR cannot be read, supply the diff and relevant files; the review must state the resulting limits. Workspace-wide or public-directory publication requires a separate process.
-
-The first version deliberately includes no MCP server, app mapping, hooks, bot, or automatic GitHub workflow. Adding GitHub access later must preserve the default review-only behavior and keep any posting action separate and subject to review of the exact draft.
-
-## Validation
-
-Every PR runs structural checks and `reuse lint` without an API key. The model evaluation is optional and runs on `main` only if enabled and an API key is configured; otherwise it skips the model without failing the workflow. The CI contract and its limitations are documented in [`CONTRIBUTING.md`](CONTRIBUTING.md).
+To contribute a skill or adapt a workflow to another project, see [CONTRIBUTING.md](CONTRIBUTING.md).
