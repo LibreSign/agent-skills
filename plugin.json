@@ -1,0 +1,27 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "libresign-agent-skills",
+  "version": "0.1.0",
+  "description": "Reusable, human-reviewed workflows for free software projects, starting with pull request review.",
+  "author": {
+    "name": "LibreCode coop and contributors"
+  },
+  "repository": "https://github.com/LibreSign/agent-skills",
+  "license": "AGPL-3.0-or-later",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "LibreSign Agent Skills",
+        "shortDescription": "Review pull requests with a human publication step",
+        "longDescription": "Investigate code changes across repositories, verify candidate findings, and prepare precise review comments for a human to check and publish.",
+        "developerName": "LibreCode coop and contributors",
+        "category": "Productivity",
+        "capabilities": ["Read"],
+        "defaultPrompt": [
+          "Review this pull request and prepare comments for me to check: ",
+          "Re-review this pull request after the latest changes: "
+        ]
+      }
+    }
+  }
+}

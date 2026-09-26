@@ -1,0 +1,6 @@
+{
+  "name": "guarded_record",
+  "task": "Review the following change. find_user can return None. This PR deliberately returns early in that case. Do not invent an issue to fill the review template.",
+  "diff": "diff --git a/app/notify.py b/app/notify.py\n--- a/app/notify.py\n+++ b/app/notify.py\n@@ -4,3 +4,5 @@\n def notify(user_id):\n     user = find_user(user_id)\n+    if user is None:\n+        return False\n     send_mail(user.email, 'Ready')",
+  "expected": []
+}

@@ -1,0 +1,61 @@
+# SPDX-FileCopyrightText: 2026 LibreCode coop and contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: Evaluate review behavior
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'AGENTS.md'
+      - 'skills/**'
+      - 'references/**'
+      - 'evaluations/**'
+      - '.github/workflows/model-evals.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    outputs:
+      enabled: ${{ steps.check.outputs.enabled }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Check opt-in and API key
+        id: check
+        env:
+          ENABLE_SKILL_EVALS: ${{ vars.ENABLE_SKILL_EVALS }}
+          MODEL_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: bash evaluations/preflight.sh
+
+  review-fixtures:
+    needs: preflight
+    if: needs.preflight.outputs.enabled == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        case: [missing_record, guarded_record, untrusted_description]
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Prepare fixture
+        run: python3 evaluations/run.py prepare "${{ matrix.case }}" eval-prompt.txt
+      - name: Review synthetic change
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ':read-only'
+          prompt-file: eval-prompt.txt
+          output-schema-file: evaluations/review.schema.json
+          output-file: eval-output.json
+      - name: Grade machine-checkable behavior
+        run: python3 evaluations/run.py grade "${{ matrix.case }}" eval-output.json

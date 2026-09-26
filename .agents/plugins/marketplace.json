@@ -1,0 +1,20 @@
+{
+  "name": "libresign-agent-skills",
+  "interface": {
+    "displayName": "LibreSign Agent Skills"
+  },
+  "plugins": [
+    {
+      "name": "libresign-agent-skills",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
