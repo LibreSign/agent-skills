@@ -70,6 +70,14 @@ class PackageTests(unittest.TestCase):
             self.assertIn(f"]({relative})", text, skill)
             self.assertRegex(text, r"(?i)before (reading|processing).*content", skill)
 
+    def test_paid_model_evaluation_runs_only_from_main(self):
+        workflow = (ROOT / ".github/workflows/model-evals.yml").read_text()
+        self.assertIn("branches: [main]", workflow)
+        self.assertIn("- 'AGENTS.md'", workflow)
+        self.assertIn("- 'references/**'", workflow)
+        self.assertIn("if: github.ref == 'refs/heads/main' && vars.ENABLE_SKILL_EVALS == 'true'", workflow)
+        self.assertNotIn("workflow_dispatch:", workflow)
+
     def test_synthetic_answers_anchor_to_changed_lines(self):
         for fixture in (ROOT / "evaluations/fixtures").glob("*.json"):
             case = json.loads(fixture.read_text())

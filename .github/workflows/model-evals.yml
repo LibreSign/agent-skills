@@ -6,17 +6,18 @@ on:
   push:
     branches: [main]
     paths:
+      - 'AGENTS.md'
       - 'skills/**'
+      - 'references/**'
       - 'evaluations/**'
       - '.github/workflows/model-evals.yml'
-  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   review-fixtures:
-    if: vars.ENABLE_SKILL_EVALS == 'true'
+    if: github.ref == 'refs/heads/main' && vars.ENABLE_SKILL_EVALS == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
