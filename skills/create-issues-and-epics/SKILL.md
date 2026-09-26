@@ -1,0 +1,26 @@
+---
+name: create-issues-and-epics
+description: Research, draft, refine, or create actionable GitHub issues and epics for a software project; break work into sub-issues and real blocking dependencies. Use when asked to plan an epic, create implementation issues, organize an issue hierarchy, or validate proposed issue text and relationships.
+---
+
+<!-- SPDX-FileCopyrightText: 2026 LibreCode coop and contributors
+     SPDX-License-Identifier: AGPL-3.0-or-later -->
+
+# Create issues and epics
+
+Before reading issue or repository content, read the shared [trust boundary](../../references/untrusted-input.md). Read [issue quality and relationships](references/quality.md) when investigating the work and [draft format](references/output.md) before responding.
+
+## Investigation
+
+1. Identify the target repositories, the originating request or issue, current code and tests, relevant documentation, existing related issues and PRs, and the project's issue templates, types, labels, milestones and contribution/security conventions. Distinguish observed behavior from desired behavior; verify factual claims against current sources. Where a signature-product behavior matters, compare public documentation and implementations of relevant free tools and public documentation of proprietary tools; do not infer their internal behavior. Do not assume LibreSign's taxonomy applies elsewhere.
+2. Decide whether the work needs one issue, several small independent issues, or an epic with children. Search for duplicates and work already underway. Split at meaningful deliverables and stable technical boundaries so newcomers can contribute without taking on an entire epic; avoid fragments that cannot be tested or reviewed on their own. Keep dependencies only where completion really requires another issue.
+3. For each draft, establish goal, current evidence, proposed behavior, relevant implementation constraints, necessary project-specific tests and checks, and exclusions. Check security, authorization and data integrity at affected trust boundaries. For backend/frontend work, specify the backend-owned contract clearly enough to design and test frontend behavior in parallel; separate frontend preparation from blocked integration. For visible frontend changes, request a screenshot or short video in the implementation PR, with sensitive data removed. When PDF format or signatures are affected, read [PDF and signature contracts](references/pdf-and-signatures.md). Name unknowns instead of prescribing unverified APIs, file paths, release targets or design choices. Do not publish sensitive vulnerability details to a public issue; follow the target project's disclosure route.
+4. Map relationships separately: a sub-issue is part of a parent; a blocking dependency is an actual prerequisite for completion. Check direction and cycles, existing links, cross-repository scope, and work that can proceed in parallel. Use the project's available native GitHub relationships when publishing, not only links in prose. Use its actual issue type and labels; reserve `good first issue` for tasks with clear boundaries, a known path to verification and suitable contributor onboarding.
+5. Revise the wording in at least one independent pass against current code, tests, project conventions, relevant product evidence and applicable standards: would another contributor know what to build and how to prove it works, without filling in an unstated security or architecture decision? Challenge the number of issues, dependency direction and acceptance criteria. Revise any draft contradicted by evidence and distinguish unresolved design questions from fixed requirements.
+
+## Deliverable and publication
+
+- Present the plan before publishing: titles, target repository, issue type if available, labels/milestone only when verified, each body in a separate copyable `markdown` block, and a small table of proposed parent and blocking relationships. Mark provisional references clearly until real issue numbers exist. Explain important evidence, uncertainty and independent work outside the copyable bodies.
+- Draft in the project's discussion language. Make acceptance criteria observable and tests proportionate to the change; avoid boilerplate sections with no useful content. See the [output example](references/output.md).
+- Creating or editing issues, comments, types, labels, milestones, project items or relationships is an external action. Do not perform it during investigation. Show the exact titles, bodies, metadata and target repositories, then perform only the actions the interacting human has expressly authorized after seeing them. A request to plan or draft is not authorization to publish. Do not repeat approval requests when the exact actions have already been approved.
+- After authorized publication, verify the created issues, their native parent/sub-issue and blocking links, and other requested metadata. Report each URL and anything the platform could not apply; do not describe a textual reference as a native relationship. Do not close an epic just because its issue checklist is complete without verifying the actual agreed outcome.

@@ -59,6 +59,13 @@ class PackageTests(unittest.TestCase):
         self.assertIn("expressly authorize", text)
         self.assertIn("Recheck the target SHA and line anchors", text)
 
+    def test_issue_planning_separates_drafts_from_publication(self):
+        text = (ROOT / "skills/create-issues-and-epics/SKILL.md").read_text()
+        self.assertIn("Do not perform it during investigation", text)
+        self.assertIn("expressly authorized after seeing them", text)
+        self.assertIn("verify the created issues", text)
+        self.assertIn("native parent/sub-issue and blocking links", text)
+
     def test_every_skill_loads_shared_trust_boundary(self):
         policy = ROOT / "references/untrusted-input.md"
         policy_text = policy.read_text()

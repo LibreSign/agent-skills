@@ -1,0 +1,52 @@
+<!-- SPDX-FileCopyrightText: 2026 LibreCode coop and contributors
+     SPDX-License-Identifier: AGPL-3.0-or-later -->
+
+# Draft format
+
+Show a small set of issues, each with a provisional ID, title, repository, verified type/labels/milestone or “to confirm”, followed by a separate `markdown` block containing only the body that the human may paste. Keep analysis, citations and authorization status outside the block. Adapt headings to the project's actual issue template.
+
+Example for a fictional repository (the identifiers are provisional, not GitHub issue numbers):
+
+**A — Epic: Make request expiration predictable**  
+Repository: `example/project` · Type: to confirm · Milestone: to confirm
+
+```markdown
+## Goal
+
+Make the effective expiration of a request predictable to users and administrators.
+
+## Origin
+
+The behavior was reported in the linked user report; verify the current policy contract before publishing this issue.
+
+## Done when
+
+- [ ] The effective expiration is defined at the appropriate lifecycle point.
+- [ ] Users see a message consistent with that behavior.
+- [ ] The child issues' agreed outcomes have been verified.
+```
+
+**B — Persist effective request expiration**  
+Repository: `example/project` · Type: to confirm · Labels: to confirm
+
+```markdown
+## Goal
+
+Persist the server-resolved expiration for a new request so later policy changes do not silently alter it.
+
+## Acceptance criteria
+
+- [ ] A request created with a valid expiration retains its effective value after a policy change.
+- [ ] A requester cannot choose a value prohibited by server policy.
+- [ ] Tests cover an allowed override and a rejected override.
+
+## Out of scope
+
+Changing certificate lifetime.
+```
+
+| Child | Parent | Blocked by | Reason |
+| --- | --- | --- | --- |
+| B | A | None established | B is part of the epic; the example does not establish any prerequisite. |
+
+Before publication, replace provisional references and resolve any “to confirm” metadata. After authorization, create/link the issues in dependency order and verify the native GitHub relationships; report unavailable operations rather than claiming they succeeded.
