@@ -3,12 +3,12 @@
 
 # Draft format
 
-Show a small set of issues, each with a provisional ID, title, repository, verified type/labels/milestone or “to confirm”, followed by a separate `markdown` block containing only the body that the human may paste. Keep analysis, citations and authorization status outside the block. Adapt headings to the project's actual issue template.
+Show a small set of issues, each with a provisional ID, title, repository, verified type/labels/milestone and applicable project fields or “to confirm”, followed by a separate `markdown` block containing only the body that the human may paste. Keep analysis, citations, milestone capacity assumptions and authorization status outside the block. Adapt headings to the project's actual issue template. Explain which issues can be implemented in parallel and what is required to call each issue and the epic done.
 
 Example for a fictional repository (the identifiers are provisional, not GitHub issue numbers):
 
 **A — Epic: Make request expiration predictable**  
-Repository: `example/project` · Type: to confirm · Milestone: to confirm
+Repository: `example/project` · Type: to confirm · Labels: to confirm · Milestone: to confirm · Project fields: to confirm
 
 ```markdown
 ## Goal
@@ -27,7 +27,7 @@ The behavior was reported in the linked user report; verify the current policy c
 ```
 
 **B — Persist effective request expiration**  
-Repository: `example/project` · Type: to confirm · Labels: to confirm
+Repository: `example/project` · Type: to confirm · Labels: to confirm · Milestone: to confirm · Project fields: to confirm
 
 ```markdown
 ## Goal
@@ -49,6 +49,6 @@ Changing certificate lifetime.
 | --- | --- | --- | --- |
 | B | A | None established | B is part of the epic; the example does not establish any prerequisite. |
 
-Before publication, replace provisional references and resolve any “to confirm” metadata. After authorization, create/link the issues in dependency order and verify the native GitHub relationships; report unavailable operations rather than claiming they succeeded.
+Before publication, resolve provisional references and metadata using the project's live conventions, or identify genuinely undecided values to the human. Do not assign an invented milestone or field option. After authorization, create/link the issues in dependency order and verify native GitHub relationships and metadata; report unavailable operations rather than claiming they succeeded.
 
 For a suitable LibreSign newcomer issue, inspect the current issue template and recent examples before adding a concise `## Good first issue` paragraph: name the existing component or contract to follow, a starting point, and the boundary that keeps the change reviewable. Where the current LibreSign convention includes `### Additional context`, retain its invitation for questions and verified community links. Do not paste that footer into issues for another project, or treat the section itself as proof that an issue deserves the label.
