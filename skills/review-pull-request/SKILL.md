@@ -18,6 +18,25 @@ Review the change independently, including when the user proposes a finding or a
 4. Challenge each candidate finding: is this introduced or exposed by the PR, reachable under the project's real contract, observable to a user or caller, and not already handled? Seek a concrete code path, reproduction or focused test, plus a plausible counterexample or alternative explanation. Check whether tests fail for the wrong behavior rather than simply increasing coverage. Revise or discard a finding when the code, requirements or user-supplied evidence contradicts it; do not assume the user's hypothesis is correct either. Explore relevant security, integrity and regression risks without manufacturing comments to cover categories.
 5. Decide whether the evidence supports a fix before merge, a question, a nonblocking follow-up or no comment under `references/findings.md`. Label remaining hypotheses and the verification that would change the decision; never call a repeatedly failing check flaky without evidence. If a sensitive vulnerability is suspected, follow the target repository's private reporting policy and avoid drafting public exploit details.
 
+
+## Conversation title
+
+When the environment can suggest or set the conversation title, prefer a concise PR-specific title after the repository, PR number and actual scope are known.
+
+- For pull requests in `LibreSign/libresign`, use: `PR <number> <2-4 word context>`.
+- For pull requests in any other repository, use: `PR <number> <repository> <2-4 word context>`.
+- Use only the repository name, not the organization or owner name.
+- Derive the context from the PR's actual scope after inspection rather than blindly copying a vague PR title.
+- Prefer specific subject words over generic terms such as `review`, `changes`, `update` or `fix`.
+- Keep an existing conversation title stable during re-reviews unless the user asks to rename it.
+- If the environment does not expose conversation-title control, do not add a title suggestion to the normal review response solely to compensate.
+
+Examples:
+- `PR 8964 Behat OCC commands`
+- `PR 8947 DocMDP policy`
+- `PR 6 pdf-signer CSC providers`
+- `PR 123 nextcloud-server AppData isolation`
+
 ## Deliverable
 
 - Start with a short verdict about merge readiness, the scope reviewed and meaningful limits. Say explicitly when no comment is recommended; do not imply that a clean review proves the absence of defects.
