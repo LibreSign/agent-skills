@@ -31,6 +31,18 @@ For domain-specific features, research relevant free implementations and public 
 
 Check existing relationships before planning new ones. Dependencies can cross repositories when supported and justified; a sub-issue belongs under the epic whose outcome contains it. Avoid circular or redundant edges, and identify which children can proceed in parallel.
 
+## Stacked pull-request decisions
+
+Issue hierarchy, blocking dependencies and pull-request stacks answer different questions.
+
+- Use **independent issues/PRs** when contributors can implement and verify outcomes in parallel.
+- Use a **blocking dependency** when one issue cannot be correctly completed without another outcome being completed first.
+- Use a **stacked PR** when a sequence of code changes is intentionally reviewable in layers but each later code layer depends on an earlier unmerged layer.
+
+Do not turn every epic or large refactor into a stack. A stack adds serialization and coordination cost, so prefer independent branches when stable boundaries permit them. Conversely, do not force one oversized PR when a real technical dependency can be expressed as a short reviewable stack.
+
+When proposing a stack, describe the base relationship and the independently reviewable purpose of each layer. Keep issue dependencies aligned with product/technical prerequisites rather than mirroring PR ancestry mechanically. A stacked PR can implement one issue or several related issues; the GitHub issue graph and Git branch graph need not be identical.
+
 ## Planning metadata and done criteria
 
 Inspect the target project's live issue templates, organization issue types, label names and meanings, project membership and relevant fields before proposing values. Distinguish an issue type from a label, a native parent link from a `blocked by` edge, and repository metadata from project or organization fields. For each proposed issue and epic, record applicable type, labels, milestone, project fields and relationship targets; mark unavailable or undecided values as such. Do not invent a priority, size, status, field option, milestone or epic type. If the available integration cannot set a required field or native relationship, report it for manual completion and verification after publication.
