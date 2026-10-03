@@ -1,0 +1,3 @@
+interface:
+  display_name: "Diagnose CI Failure"
+  short_description: "Find the causal CI failure and prove a focused fix"

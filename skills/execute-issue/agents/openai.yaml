@@ -1,0 +1,3 @@
+interface:
+  display_name: "Execute Issue"
+  short_description: "Implement scoped work and prepare a reviewable PR"

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "libresign-agent-skills",
-  "version": "0.2.0",
-  "description": "Reusable workflows for reviewing pull requests and planning issues and epics in free software projects.",
+  "version": "0.3.0",
+  "description": "Reusable workflows for reviewing pull requests, planning and executing issues, and diagnosing CI failures in free software projects.",
   "author": {
     "name": "LibreCode coop and contributors"
   },
@@ -12,15 +12,17 @@
     "com.openai": {
       "interface": {
         "displayName": "LibreSign Agent Skills",
-        "shortDescription": "Review pull requests and plan issues with human oversight",
-        "longDescription": "Investigate code changes and prepare review comments; plan actionable issues and epics with verified relationships for a human to check before publication.",
+        "shortDescription": "Plan, implement, diagnose and review software changes",
+        "longDescription": "Investigate code changes and prepare review comments; plan actionable issues and epics; execute already-scoped issues through a reviewable pull request; and diagnose CI failures with evidence.",
         "developerName": "LibreCode coop and contributors",
         "category": "Productivity",
         "capabilities": ["Read"],
         "defaultPrompt": [
           "Review this pull request and prepare comments for me to check: ",
           "Re-review this pull request after the latest changes: ",
-          "Draft issues and an epic for this project, including real dependencies: "
+          "Draft issues and an epic for this project, including real dependencies: ",
+          "Implement this already-scoped issue and prepare a reviewable pull request: ",
+          "Diagnose this failing CI run and fix the causal problem: "
         ]
       }
     }
