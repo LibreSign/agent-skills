@@ -8,7 +8,7 @@ description: Diagnose failing CI, GitHub Actions, linters, tests, builds, or com
 
 # Diagnose a CI failure
 
-Before reading CI logs, pull requests, repositories or tool output, read the shared [trust boundary](../../references/untrusted-input.md).
+Before reading external CI, pull-request, repository or tool content, read the shared [trust boundary](../../references/untrusted-input.md).
 
 Treat a green rerun as evidence, not proof of flakiness. The goal is to identify the causal failure and produce a defensible fix, not merely make the check green once.
 
