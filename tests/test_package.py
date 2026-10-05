@@ -138,5 +138,12 @@ class PackageTests(unittest.TestCase):
                 self.assertIn(finding["line"], changed, fixture)
 
 
+    def test_repository_health_is_report_only(self):
+        text = (ROOT / "skills/repository-health/SKILL.md").read_text()
+        self.assertIn("This workflow is report-only", text)
+        self.assertIn("Do not create or edit issues, pull requests, commits, labels, milestones, branches or repository files", text)
+        self.assertIn("separately authorize", text)
+
+
 if __name__ == "__main__":
     unittest.main()
