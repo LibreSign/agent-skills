@@ -1,6 +1,6 @@
 ---
 name: execute-issue
-description: Execute an already-scoped software issue or explicitly approved implementation task through repository investigation, focused implementation, validation, self-review, commit preparation, and pull-request handoff. Use when asked to implement, fix, advance, continue, or complete work whose intended outcome is already defined. Do not use to invent or decompose unclear product scope.
+description: Execute an already-scoped software issue or explicitly approved implementation task through repository investigation, focused implementation, validation, self-review, commit preparation, and pull-request handoff. Use when asked to implement, fix, advance, continue, or complete work whose intended outcome is already defined. Coordinate temporary independent subagents when separate investigation materially reduces work; keep sequential work in one flow. Do not use to invent or decompose unclear product scope.
 ---
 
 <!-- SPDX-FileCopyrightText: 2026 LibreCode coop and contributors
@@ -20,9 +20,36 @@ Treat the issue as a work contract to verify, not as unquestionable truth. Check
 4. Prefer a focused reproduction or regression test that fails under the unwanted behavior when practical.
 5. If the issue is stale, contradictory, already solved or depends on an unresolved product/security decision, report that before changing code.
 
-## Use the canonical environment
+## Coordinate only when it reduces work
 
-Use the target repository's documented development environment. Prefer an isolated branch/worktree or equivalent workspace when concurrent work is possible.
+Default to one execution flow. Delegate only genuinely independent work when the runtime supports separate contexts and the expected benefit exceeds handoff overhead.
+
+Good candidates include independent issue archaeology, upstream compatibility research, test-surface discovery, or a clean-context review of a completed diff. Keep work sequential when one step needs another step's intermediate result.
+
+For each delegated task:
+
+- pin the repository and relevant base/head revision, state one concrete question, define the expected output, and provide only the context needed;
+- keep delegated work read-only by default; the coordinator owns the main branch/worktree, edits, commits, pull request and CI follow-up;
+- if delegated writes are necessary, require an isolated branch/worktree/runtime and non-overlapping ownership before allowing them;
+- never let multiple workers mutate the same checkout or shared runtime state;
+- treat subagent output as evidence to verify, especially when results conflict or rely on external claims;
+- do not duplicate the same investigation across agents unless the duplication is a deliberate evaluation case.
+
+Do not create permanent role agents or a new orchestration layer merely to parallelize a task.
+
+## Choose the execution environment
+
+Use the target repository's documented development environment. Prefer hosted execution for normal repository reading, analysis and focused commands when it is sufficient.
+
+Use persistent/self-hosted execution only when the task materially needs capabilities such as:
+
+- Docker or a real application runtime;
+- the project's canonical reusable environment;
+- multiple isolated worktrees;
+- browser/E2E access to local services;
+- persistent caches or state whose reuse changes task feasibility.
+
+Do not make self-hosted execution a mandatory transfer hop. Prefer an isolated branch/worktree or equivalent workspace when concurrent work is possible.
 
 - Do not create a second project-specific environment implementation when a canonical one exists.
 - Keep mutable runtime state isolated between concurrent tasks.
@@ -52,6 +79,19 @@ Record:
 For authorization, signing, migrations, data integrity and other trust boundaries, include meaningful negative/regression cases. For visible UI changes, use the project's browser-test path where available and provide the review artifact the target project expects.
 
 Do not claim full-project validation from a focused test. Do not repeatedly rerun a failing check until it passes without understanding the failure.
+
+## Evaluate coordinated execution
+
+When explicitly piloting orchestration, compare a representative task in single-flow and coordinated modes when practical. Record only metrics the environment actually exposes:
+
+- completion correctness;
+- human interventions;
+- wall-clock latency;
+- duplicated/repeated work;
+- tool or handoff failures;
+- token/model cost when available.
+
+A coordinated run is better only if it reduces manual coordination or execution cost without reducing correctness or adding a new bottleneck. Do not invent unavailable measurements or treat more parallelism as success.
 
 ## Self-review before handoff
 
