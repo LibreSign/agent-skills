@@ -3,7 +3,7 @@
 
 # LibreSign agent skills
 
-Reusable skills for LibreSign and other free software projects. Each skill guides a task while preserving the target project's contribution and authorization boundaries.
+Reusable skills for LibreSign and other free software projects. Each skill guides a task while preserving the target project's contribution and authorization boundaries. The catalog is intentionally bounded by semantic need rather than a numeric target: new workflows should extend or compose existing skills whenever that avoids overlapping activation.
 
 ## Skills
 
@@ -20,4 +20,4 @@ Reusable skills for LibreSign and other free software projects. Each skill guide
 
 Add this repository as a marketplace with `codex plugin marketplace add LibreSign/agent-skills` and install **LibreSign Agent Skills** in ChatGPT or Codex. Select a skill and provide a PR link, diff, issue context, failing workflow, repository-health question, or upstream compatibility question. Repository access depends on the tools connected to your environment.
 
-To contribute a skill or adapt a workflow to another project, see [CONTRIBUTING.md](CONTRIBUTING.md).
+To contribute a skill or adapt a workflow to another project, see [CONTRIBUTING.md](CONTRIBUTING.md) and the [skill catalog design](references/skill-catalog.md).

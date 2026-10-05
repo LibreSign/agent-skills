@@ -1,6 +1,6 @@
 ---
 name: repository-health
-description: Audit a software repository for actionable maintenance debt and repository-health risks, producing an evidence-ranked maintainer report without automatically creating issues, pull requests, commits, labels, or cleanup changes. Use for technical-debt gardening, stale TODO/FIXME review, deprecated APIs, obsolete CI/configuration, skipped tests, stale suppressions, dead-code candidates, documentation drift, duplication, or similar repository-maintenance scans.
+description: Audit the target repository's current internal maintenance debt and repository-health risks, producing an evidence-ranked maintainer report without automatically creating issues, pull requests, commits, labels, or cleanup changes. Use for technical-debt gardening, stale TODO/FIXME review, stale suppressions, skipped tests, dead-code candidates, local documentation drift, duplication, or obsolete local configuration. Do not use when the request starts from a new upstream platform, dependency, runtime, or toolchain change; use upstream-compatibility for that.
 ---
 
 <!-- SPDX-FileCopyrightText: 2026 LibreCode coop and contributors
