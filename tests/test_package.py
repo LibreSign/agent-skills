@@ -145,5 +145,12 @@ class PackageTests(unittest.TestCase):
         self.assertIn("separately authorize", text)
 
 
+    def test_upstream_compatibility_is_report_only_and_requires_local_usage(self):
+        text = (ROOT / "skills/upstream-compatibility/SKILL.md").read_text()
+        self.assertIn("If no actual local usage exists, reject the candidate as irrelevant", text)
+        self.assertIn("This workflow is report-only", text)
+        self.assertIn("separately authorize", text)
+
+
 if __name__ == "__main__":
     unittest.main()
