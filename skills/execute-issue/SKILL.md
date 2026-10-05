@@ -82,7 +82,7 @@ Do not claim full-project validation from a focused test. Do not repeatedly reru
 
 ## Evaluate coordinated execution
 
-When explicitly piloting orchestration, compare a representative task in single-flow and coordinated modes when practical. Record only metrics the environment actually exposes:
+When explicitly piloting orchestration, read [the orchestration pilot protocol](references/orchestration-pilot.md) and compare the same representative task in single-flow and coordinated modes when practical. Record only metrics the environment actually exposes:
 
 - completion correctness;
 - human interventions;

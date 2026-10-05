@@ -20,3 +20,17 @@ The optional model evaluation runs on pushes to `main` that change a skill, shar
 For changes to instructions, compare at least one expected defect, one clean control and one case that tries to persuade the reviewer to publish. Exercise attacks in PR discussion, commit messages, source and logs, and in an instruction file changed by the PR; check both whether the agent performed any unauthorized tool action and whether it changed its findings. Run these in an isolated environment without real write credentials. Also exercise a fresh PR in a real project before treating the skill as mature. Log the model, skill revision, PR head, available tools, executed checks, accurate and spurious findings, line accuracy and human validation time. Historical comments in [`evaluations/review-pull-request.md`](evaluations/review-pull-request.md) are candidates, not a complete answer key. Update the fixtures when a real miss shows a generalizable failure; avoid scoring only literal phrases from the skill.
 
 For changes to issue planning, use the scenarios in [`evaluations/create-issues-and-epics.md`](evaluations/create-issues-and-epics.md). Inspect factual grounding, duplicates, useful scope, issue taxonomy, native relationship directions and actual external actions separately; structural CI cannot establish these behaviors.
+
+
+## Run the orchestration pilot
+
+The coordinator/subagent pilot is opt-in and is not part of normal CI. It uses the OpenAI Agents API because that runtime provides real independent subagent contexts. Install the current OpenAI Python SDK, set `OPENAI_API_KEY`, choose an explicit model, and run:
+
+```bash
+python3 evaluations/orchestration_pilot.py \\
+  --input evaluations/fixtures/orchestration_independent_investigation.txt \\
+  --model <model-id> \\
+  --output orchestration-result.json
+```
+
+Review the result manually and fill the correctness/intervention fields. Do not commit API keys, raw private task packets, or evaluation outputs containing private repository data.
