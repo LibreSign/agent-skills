@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "libresign-agent-skills",
-  "version": "0.5.0",
-  "description": "Reusable workflows for reviewing pull requests, planning and executing issues, coordinating independent engineering investigation, diagnosing CI failures, and auditing repository health in free software projects.",
+  "version": "0.6.0",
+  "description": "Reusable workflows for reviewing pull requests, planning and executing issues, coordinating engineering investigation, diagnosing CI failures, auditing repository health, and analyzing upstream compatibility in free software projects.",
   "author": {
     "name": "LibreCode coop and contributors"
   },
@@ -13,7 +13,7 @@
       "interface": {
         "displayName": "LibreSign Agent Skills",
         "shortDescription": "Plan, implement, diagnose and review software changes",
-        "longDescription": "Investigate code changes and prepare review comments; plan actionable issues and epics; execute already-scoped issues with optional temporary delegation; diagnose CI failures; and audit repository health with evidence and human-controlled publication.",
+        "longDescription": "Investigate and review code changes; plan and execute issues; coordinate temporary independent investigation; diagnose CI; audit repository health; and filter upstream compatibility changes against real project usage.",
         "developerName": "LibreCode coop and contributors",
         "category": "Productivity",
         "capabilities": ["Read"],
@@ -23,7 +23,8 @@
           "Draft issues and an epic for this project, including real dependencies: ",
           "Implement this already-scoped issue and prepare a reviewable pull request: ",
           "Diagnose this failing CI run and fix the causal problem: ",
-          "Audit this repository for actionable maintenance debt and prepare a report: "
+          "Audit this repository for actionable maintenance debt and prepare a report: ",
+          "Check relevant upstream changes against this repository and prepare a compatibility report: "
         ]
       }
     }
