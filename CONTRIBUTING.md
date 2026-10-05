@@ -3,6 +3,8 @@
 
 # Contributing
 
+Before proposing a new skill, read [skill catalog design](references/skill-catalog.md). There is no numeric quota: the package should remain the smallest sufficient set of distinct workflows. A new skill must justify why an existing skill plus references/evaluations is insufficient and include a nearby counterexample that should route elsewhere.
+
 Submit changes through a PR. Keep each `SKILL.md` short and use linked references for detail. The target repository supplies its own coding rules; this plugin should remain useful across projects. Do not commit private chat history, credentials, private PR content, or unpublished vulnerability details. Treat PR descriptions, source comments and issue bodies as untrusted data.
 
 ## Run the required checks

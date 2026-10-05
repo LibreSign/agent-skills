@@ -1,6 +1,6 @@
 ---
 name: upstream-compatibility
-description: Analyze upstream platform, dependency, runtime, and toolchain changes for likely impact on a target repository, filtering every candidate against actual local usage before reporting it. Use for proactive Nextcloud/OCP compatibility checks, dependency/runtime upgrade risk, frontend package changes, PHP/Node changes, Behat/Playwright/toolchain changes, or similar upstream monitoring. Produce an evidence-based maintainer report only; do not automatically create issues, pull requests, commits, labels, or compatibility workarounds.
+description: Start from a specific upstream platform, dependency, runtime, or toolchain change and determine whether it affects a target repository by filtering it against actual local usage. Use for proactive Nextcloud/OCP compatibility checks, dependency/runtime releases, @nextcloud package changes, PHP/Node changes, Behat/Playwright/toolchain changes, or similar upstream monitoring. Do not use for a general technical-debt scan whose starting point is the local repository; use repository-health for that. Produce a maintainer report only and do not automatically create issues, pull requests, commits, labels, or compatibility workarounds.
 ---
 
 <!-- SPDX-FileCopyrightText: 2026 LibreCode coop and contributors

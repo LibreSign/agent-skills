@@ -152,5 +152,20 @@ class PackageTests(unittest.TestCase):
         self.assertIn("separately authorize", text)
 
 
+    def test_skill_catalog_requires_minimal_non_overlapping_workflows(self):
+        policy = (ROOT / "references/skill-catalog.md").read_text()
+        for required in (
+            "smallest sufficient set",
+            "There is no fixed maximum number of skills",
+            "Prefer composition over proliferation",
+            "If two skills would both reasonably trigger on the same request",
+        ):
+            self.assertIn(required, policy)
+        health = (ROOT / "skills/repository-health/SKILL.md").read_text()
+        upstream = (ROOT / "skills/upstream-compatibility/SKILL.md").read_text()
+        self.assertIn("use upstream-compatibility for that", health)
+        self.assertIn("use repository-health for that", upstream)
+
+
 if __name__ == "__main__":
     unittest.main()

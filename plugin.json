@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "libresign-agent-skills",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Reusable workflows for reviewing pull requests, planning and executing issues, coordinating engineering investigation, diagnosing CI failures, auditing repository health, and analyzing upstream compatibility in free software projects.",
   "author": {
     "name": "LibreCode coop and contributors"
@@ -16,7 +16,9 @@
         "longDescription": "Investigate and review code changes; plan and execute issues; coordinate temporary independent investigation; diagnose CI; audit repository health; and filter upstream compatibility changes against real project usage.",
         "developerName": "LibreCode coop and contributors",
         "category": "Productivity",
-        "capabilities": ["Read"],
+        "capabilities": [
+          "Read"
+        ],
         "defaultPrompt": [
           "Review this pull request and prepare comments for me to check: ",
           "Re-review this pull request after the latest changes: ",
