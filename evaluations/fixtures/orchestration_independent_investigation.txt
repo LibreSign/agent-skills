@@ -1,0 +1,36 @@
+# Orchestration pilot task packet
+
+You are evaluating a scoped maintenance proposal. Do not change any repository or publish anything.
+
+A project currently supports Platform 36. Two independent questions need investigation before maintainers decide whether to create follow-up work.
+
+## Question A — deprecated database parameter
+
+Upstream Platform documentation says `IQueryBuilder::PARAM_DATE` has been deprecated since version 31 in favor of `PARAM_DATETIME_MUTABLE`.
+
+Current project evidence:
+
+- runtime mapper `lib/Db/CrlMapper.php` passes a `DateTime` to `createNamedParameter(..., IQueryBuilder::PARAM_DATE)`;
+- an old migration also uses `PARAM_DATE`;
+- the deprecated constant still exists in Platform 36.
+
+Determine whether this is an immediate compatibility failure, maintenance debt, or noise. Treat historical migrations separately from runtime code.
+
+## Question B — apparent permanently skipped test
+
+A unit test calls `markTestSkipped()` when fixture `tests/fixtures/real_document.pdf` is absent.
+
+Repository evidence also says that exact fixture path exists and is versioned.
+
+Determine whether this should be reported as actionable test debt.
+
+## Expected report
+
+For each question give:
+
+- classification;
+- evidence;
+- what remains uncertain;
+- the smallest justified next step.
+
+Then give one combined recommendation. Do not invent command results or external evidence.

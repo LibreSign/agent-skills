@@ -18,6 +18,8 @@ Run these cases manually with the skill revision, repository state and available
 
 ## Coordination pilot record
 
+Use `evaluations/orchestration_pilot.py` for the controlled text-only baseline when Agents API access is available. It runs the same task packet once without delegation and once with multi-agent enabled, records wall-clock time, subagent creation events, output, and usage when exposed. Human correctness/intervention scoring remains explicit rather than inferred.
+
 For representative orchestration trials, compare single-flow and coordinated runs when practical. Record skill revision, repository/head SHA, task, available tools, completion correctness, human interventions, wall-clock latency, duplicated work, tool/handoff failures, and token/model cost when the environment exposes it.
 
 Do not invent unavailable measurements. A useful coordinated result should reduce manual coordination or execution cost without reducing correctness or creating a new handoff bottleneck.

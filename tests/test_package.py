@@ -167,5 +167,16 @@ class PackageTests(unittest.TestCase):
         self.assertIn("use repository-health for that", upstream)
 
 
+    def test_orchestration_pilot_reference_and_runner(self):
+        skill = (ROOT / "skills/execute-issue/SKILL.md").read_text()
+        reference = (ROOT / "skills/execute-issue/references/orchestration-pilot.md").read_text()
+        runner = (ROOT / "evaluations/orchestration_pilot.py").read_text()
+        self.assertIn("references/orchestration-pilot.md", skill)
+        self.assertIn("genuinely separate subagent contexts", reference)
+        self.assertIn('"environment": {"type": "none"}', runner)
+        self.assertIn('"multi_agent"', runner)
+        self.assertIn("agent.session.subagent.created", runner)
+
+
 if __name__ == "__main__":
     unittest.main()
