@@ -13,9 +13,10 @@ Reusable skills for LibreSign and other free software projects. Each skill guide
 | [Create issues and epics](skills/create-issues-and-epics/SKILL.md) | Checks current work, drafts actionable issues and epics, and plans genuine parent and blocking links for human review before publication. |
 | [Execute an issue](skills/execute-issue/SKILL.md) | Takes already-scoped work through investigation, focused implementation, validation, self-review and pull-request handoff; it may coordinate temporary independent subagents when that reduces work. |
 | [Diagnose a CI failure](skills/diagnose-ci-failure/SKILL.md) | Finds the causal CI failure, distinguishes regressions from upstream/environment problems and proves a focused fix with evidence. |
+| [Audit repository health](skills/repository-health/SKILL.md) | Finds actionable maintenance debt, separates signal from noise, checks duplicate work and produces a report for maintainer review without publishing changes. |
 
 ## Get started
 
-Add this repository as a marketplace with `codex plugin marketplace add LibreSign/agent-skills` and install **LibreSign Agent Skills** in ChatGPT or Codex. Select a skill and provide a PR link, diff, issue context, or failing workflow. Repository access depends on the tools connected to your environment.
+Add this repository as a marketplace with `codex plugin marketplace add LibreSign/agent-skills` and install **LibreSign Agent Skills** in ChatGPT or Codex. Select a skill and provide a PR link, diff, issue context, failing workflow, or repository-health question. Repository access depends on the tools connected to your environment.
 
 To contribute a skill or adapt a workflow to another project, see [CONTRIBUTING.md](CONTRIBUTING.md).

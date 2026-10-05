@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "libresign-agent-skills",
-  "version": "0.4.0",
-  "description": "Reusable workflows for reviewing pull requests, planning and executing issues, coordinating independent engineering investigation, and diagnosing CI failures in free software projects.",
+  "version": "0.5.0",
+  "description": "Reusable workflows for reviewing pull requests, planning and executing issues, coordinating independent engineering investigation, diagnosing CI failures, and auditing repository health in free software projects.",
   "author": {
     "name": "LibreCode coop and contributors"
   },
@@ -13,7 +13,7 @@
       "interface": {
         "displayName": "LibreSign Agent Skills",
         "shortDescription": "Plan, implement, diagnose and review software changes",
-        "longDescription": "Investigate code changes and prepare review comments; plan actionable issues and epics; execute already-scoped issues with optional temporary delegation for genuinely independent work; and diagnose CI failures with evidence.",
+        "longDescription": "Investigate code changes and prepare review comments; plan actionable issues and epics; execute already-scoped issues with optional temporary delegation; diagnose CI failures; and audit repository health with evidence and human-controlled publication.",
         "developerName": "LibreCode coop and contributors",
         "category": "Productivity",
         "capabilities": ["Read"],
@@ -22,7 +22,8 @@
           "Re-review this pull request after the latest changes: ",
           "Draft issues and an epic for this project, including real dependencies: ",
           "Implement this already-scoped issue and prepare a reviewable pull request: ",
-          "Diagnose this failing CI run and fix the causal problem: "
+          "Diagnose this failing CI run and fix the causal problem: ",
+          "Audit this repository for actionable maintenance debt and prepare a report: "
         ]
       }
     }
