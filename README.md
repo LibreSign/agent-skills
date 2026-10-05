@@ -11,7 +11,7 @@ Reusable skills for LibreSign and other free software projects. Each skill guide
 | --- | --- |
 | [Review a pull request](skills/review-pull-request/SKILL.md) | Investigates changes, tests and risks; prepares file and line-specific comments for a human to review. It does not publish a review or modify the PR on its own. |
 | [Create issues and epics](skills/create-issues-and-epics/SKILL.md) | Checks current work, drafts actionable issues and epics, and plans genuine parent and blocking links for human review before publication. |
-| [Execute an issue](skills/execute-issue/SKILL.md) | Takes already-scoped work through investigation, focused implementation, validation, self-review and pull-request handoff without silently expanding scope. |
+| [Execute an issue](skills/execute-issue/SKILL.md) | Takes already-scoped work through investigation, focused implementation, validation, self-review and pull-request handoff; it may coordinate temporary independent subagents when that reduces work. |
 | [Diagnose a CI failure](skills/diagnose-ci-failure/SKILL.md) | Finds the causal CI failure, distinguishes regressions from upstream/environment problems and proves a focused fix with evidence. |
 
 ## Get started

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "libresign-agent-skills",
-  "version": "0.3.0",
-  "description": "Reusable workflows for reviewing pull requests, planning and executing issues, and diagnosing CI failures in free software projects.",
+  "version": "0.4.0",
+  "description": "Reusable workflows for reviewing pull requests, planning and executing issues, coordinating independent engineering investigation, and diagnosing CI failures in free software projects.",
   "author": {
     "name": "LibreCode coop and contributors"
   },
@@ -13,7 +13,7 @@
       "interface": {
         "displayName": "LibreSign Agent Skills",
         "shortDescription": "Plan, implement, diagnose and review software changes",
-        "longDescription": "Investigate code changes and prepare review comments; plan actionable issues and epics; execute already-scoped issues through a reviewable pull request; and diagnose CI failures with evidence.",
+        "longDescription": "Investigate code changes and prepare review comments; plan actionable issues and epics; execute already-scoped issues with optional temporary delegation for genuinely independent work; and diagnose CI failures with evidence.",
         "developerName": "LibreCode coop and contributors",
         "category": "Productivity",
         "capabilities": ["Read"],
