@@ -3,7 +3,7 @@
 
 # Draft format
 
-Show a small set of issues, each with a provisional ID, title, repository, verified type/labels/milestone and applicable project fields or “to confirm”, followed by a separate `markdown` block containing only the body that the human may paste. Keep analysis, citations, milestone capacity assumptions and authorization status outside the block. Adapt headings to the project's actual issue template. Explain which issues can be implemented in parallel and what is required to call each issue and the epic done.
+Show a small set of issues, each with a provisional ID, title, repository, verified type/labels/milestone and applicable project fields or “to confirm”, followed by a separate `markdown` block containing only the body that the human may paste. Keep analysis, citations, milestone capacity assumptions and authorization status outside the block. Adapt headings to the project's actual issue template. Explain which issues can be implemented in parallel and what is required to call each issue and the epic done. For later epics whose prerequisites are not yet stable, preserve research/open questions and show the planning gate instead of inventing a full child backlog. For visible features, include the intended UX/prototyping deliverable where needed; for user-facing functionality, include the documentation deliverable and its place in the existing documentation structure.
 
 Example for a fictional repository (the identifiers are provisional, not GitHub issue numbers):
 
