@@ -3,6 +3,8 @@
 
 # Draft format
 
+Before approval, identify which native relationships, issue types and planning fields the available GitHub integration can actually write. Show verified values, intentional blanks, unverified options and unsupported operations separately. If a fallback requires human action, disclose it before publication.
+
 Show a small set of issues, each with a provisional ID, title, repository, verified type/labels/milestone and applicable project fields or “to confirm”, followed by a separate `markdown` block containing only the body that the human may paste. Keep analysis, citations, milestone capacity assumptions and authorization status outside the block. Adapt headings to the project's actual issue template. Explain which issues can be implemented in parallel and what is required to call each issue and the epic done. For later epics whose prerequisites are not yet stable, preserve research/open questions and show the planning gate instead of inventing a full child backlog. For visible features, include the intended UX/prototyping deliverable where needed; for user-facing functionality, include the documentation deliverable and its place in the existing documentation structure.
 
 Example for a fictional repository (the identifiers are provisional, not GitHub issue numbers):
@@ -52,3 +54,7 @@ Changing certificate lifetime.
 Before publication, resolve provisional references and metadata using the project's live conventions, or identify genuinely undecided values to the human. Do not assign an invented milestone or field option. After authorization, create/link the issues in dependency order and verify native GitHub relationships and metadata; report unavailable operations rather than claiming they succeeded.
 
 For a suitable LibreSign newcomer issue, inspect the current issue template and recent examples before adding a concise `## Good first issue` paragraph: name the existing component or contract to follow, a starting point, and the boundary that keeps the change reviewable. Where the current LibreSign convention includes `### Additional context`, retain its invitation for questions and verified community links. Do not paste that footer into issues for another project, or treat the section itself as proof that an issue deserves the label.
+
+## Post-publication reconciliation
+
+Check GitHub's actual state against the approved plan: each issue title and body, type, labels, milestones and assignees, applicable priority/effort or project fields, native parent/sub-issue links, sibling order, and blocked-by direction. Check for unexpected cycles, missing links and work that should remain parallel. Distinguish fields intentionally left unset from failed writes. Report completed and pending work explicitly; do not describe the entire publication as complete while agreed metadata remains unapplied.
