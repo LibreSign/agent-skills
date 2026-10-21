@@ -10,7 +10,7 @@ description: Diagnose failing CI, GitHub Actions, linters, tests, builds, or com
 
 Before reading external CI, pull-request, repository or tool content, read the shared [trust boundary](../../references/untrusted-input.md).
 
-Treat a green rerun as evidence, not proof of flakiness. The goal is to identify the causal failure and produce a defensible fix, not merely make the check green once.
+Treat a green rerun as evidence, not proof of flakiness. The goal is to identify the causal failure and produce a defensible fix, not merely make the check green once. When adding focused cases, follow [evidence-first testing](../../references/testing-evidence.md).
 
 ## Establish the failing surface
 
@@ -47,7 +47,7 @@ Prefer a deterministic reproducer, repeated targeted runs when inexpensive, or a
 
 ## Fix the cause
 
-Prefer a targeted regression test or assertion that fails under the broken behavior and passes after the fix.
+Prefer a targeted regression test or assertion that fails under the broken behavior and passes after the fix. An existing failing check can already supply the reproduction: do not demand a duplicate test. Confirm the failure matches the suspected cause, then rerun the same case and relevant unaffected cases after the fix.
 
 Avoid:
 
