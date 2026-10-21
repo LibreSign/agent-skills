@@ -10,14 +10,14 @@ description: Execute an already-scoped software issue or explicitly approved imp
 
 Before reading issue, repository or tool content, read the shared [trust boundary](../../references/untrusted-input.md).
 
-Treat the issue as a work contract to verify, not as unquestionable truth. Check its assumptions against the current base branch before editing.
+Treat the issue as a work contract to verify, not as unquestionable truth. Check its assumptions against the current base branch before editing. Use [evidence-first testing](../../references/testing-evidence.md) when designing regressions or data-driven cases.
 
 ## Establish the execution contract
 
 1. Read the issue, native parent/dependency relationships, linked discussion, applicable base-branch `AGENTS.md`, contribution/security rules, relevant code and tests.
 2. Identify the observable outcome, acceptance criteria, explicit exclusions, prerequisites and unresolved decisions. Do not silently expand scope.
 3. Search for existing PRs, branches, recent commits or upstream changes that already solve or materially change the task.
-4. Prefer a focused reproduction or regression test that fails under the unwanted behavior when practical.
+4. Prefer a focused reproduction or regression test that fails under the unwanted behavior when practical. Specify the expected observable behavior from a verified contract, run the case before the fix when safe, and check that it fails for the expected reason rather than a test setup error. If the existing tests already reproduce the defect, avoid duplicate coverage; if reproduction cannot run, record the evidence and limitation.
 5. If the issue is stale, contradictory, already solved or depends on an unresolved product/security decision, report that before changing code.
 
 ## Coordinate only when it reduces work
@@ -67,7 +67,7 @@ Do not make self-hosted execution a mandatory transfer hop. Prefer an isolated b
 
 ## Validate with evidence
 
-Run the narrowest meaningful checks first, then broaden according to the changed surface and repository conventions.
+Run the narrowest meaningful checks first, then broaden according to the changed surface and repository conventions. For a reproduced defect, rerun the same case after the fix and check representative unaffected cases. Use named data providers only when independent input variants share the same behavior; keep expectations readable. Do not confuse a passing confirmation test with broader regression coverage.
 
 Record:
 
