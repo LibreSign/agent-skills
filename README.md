@@ -18,6 +18,6 @@ Reusable skills for LibreSign and other free software projects. Each skill guide
 
 ## Get started
 
-Add this repository as a marketplace with `codex plugin marketplace add LibreSign/agent-skills` and install **LibreSign Agent Skills** in ChatGPT or Codex. Select a skill and provide a PR link, diff, issue context, failing workflow, repository-health question, or upstream compatibility question. Repository access depends on the tools connected to your environment.
+Add this repository as a marketplace with `codex plugin marketplace add LibreSign/agent-skills` and install **LibreSign Agent Skills** in ChatGPT or Codex. In Claude Code, run `/plugin marketplace add LibreSign/agent-skills` and then `/plugin install libresign-agent-skills@libresign-agent-skills`; install the whole plugin rather than copying individual skill folders, because the skills load shared files from `references/`. Select a skill and provide a PR link, diff, issue context, failing workflow, repository-health question, or upstream compatibility question. Repository access depends on the tools connected to your environment.
 
 To contribute a skill or adapt a workflow to another project, see [CONTRIBUTING.md](CONTRIBUTING.md) and the [skill catalog design](references/skill-catalog.md).
