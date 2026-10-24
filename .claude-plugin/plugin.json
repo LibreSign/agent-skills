@@ -1,0 +1,7 @@
+{
+  "name": "libresign-agent-skills",
+  "description": "Reusable workflows for reviewing pull requests, planning and executing issues, coordinating engineering investigation, diagnosing CI failures, auditing repository health, and analyzing upstream compatibility in free software projects.",
+  "author": {
+    "name": "LibreCode coop and contributors"
+  }
+}
