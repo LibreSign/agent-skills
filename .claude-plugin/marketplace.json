@@ -1,5 +1,6 @@
 {
   "name": "libresign-agent-skills",
+  "description": "LibreSign agent skills for free software engineering workflows.",
   "owner": {
     "name": "LibreCode coop and contributors"
   },

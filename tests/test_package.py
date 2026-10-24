@@ -43,7 +43,7 @@ class PackageTests(unittest.TestCase):
         manifest = json.loads((ROOT / "plugin.json").read_text())
         claude_manifest = json.loads((ROOT / ".claude-plugin/plugin.json").read_text())
         claude_marketplace = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text())
-        for field in ("name", "version", "description", "author", "repository", "license"):
+        for field in ("name", "description", "author"):
             self.assertEqual(claude_manifest[field], manifest[field], field)
         self.assertEqual(claude_marketplace["name"], manifest["name"])
         self.assertTrue(claude_marketplace["owner"]["name"])
@@ -52,6 +52,8 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(entry["name"], manifest["name"])
         self.assertEqual(entry["source"], "./")
         self.assertEqual(entry["description"], manifest["description"])
+        self.assertNotIn("version", claude_manifest)
+        self.assertNotIn("version", entry)
 
     def test_skill_activation_metadata_and_local_links(self):
         skills = list((ROOT / "skills").glob("*/SKILL.md"))

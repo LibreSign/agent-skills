@@ -1,10 +1,7 @@
 {
   "name": "libresign-agent-skills",
-  "version": "0.6.1",
   "description": "Reusable workflows for reviewing pull requests, planning and executing issues, coordinating engineering investigation, diagnosing CI failures, auditing repository health, and analyzing upstream compatibility in free software projects.",
   "author": {
     "name": "LibreCode coop and contributors"
-  },
-  "repository": "https://github.com/LibreSign/agent-skills",
-  "license": "AGPL-3.0-or-later"
+  }
 }
