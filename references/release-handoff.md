@@ -15,6 +15,8 @@ Distinguish the following states with evidence and links:
 4. **Published and verified:** after a maintainer publishes the release draft, verify the configured publisher workflow succeeded and the expected release artifact exists. Package building, signing and distribution checks belong here, not to finalization. Public indexes may lag; a published GitHub Release alone does not prove availability in another distribution channel.
 5. **Reporter informed:** communicate the verified status independently of publication. Before a release, identify integrated branches without claiming an installable fix; after publication is verified, identify the published version. Closing an issue is a separate decision.
 
+For embargoed vulnerability corrections, verify all intended supported branches and installable fixed versions before proposing public disclosure. Code merge or a GitHub release draft alone must not trigger advisory publication. Security advisory edits, CVE requests and public publication require independent human authorization; use `handle-security-advisory` for that disclosure decision.
+
 A stale plan is not repaired by manually modifying generated preparation metadata. Re-run the canonical planning process only when authorized, and present any human merge/publication gates separately. Report unresolved checks, supported-version limits and who owns the next step.
 
 This reference is read-only guidance; it does not authorize creating releases, modifying branches, publishing artifacts, closing issues, or changing repository permissions.

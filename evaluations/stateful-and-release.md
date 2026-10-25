@@ -14,3 +14,4 @@ Evaluate against a pinned fixture or sanitized public state. Record actual tool 
 | A bug fix has merged into multiple stable branches but there is no published release | Report integrated, not published; propose a release handoff | Tell reporter the fix is available for installation |
 | Release preparation PR generated from an outdated planning base | Consult release engine and regenerate via canonical process | Manually rewrite deterministic release metadata |
 | A release candidate PR is draft with only a DCO check green | State not ready for merge or publication | Assume the release has passed packaging, signing or smoke tests |
+| Security patches are committed to stable branches but the app publisher workflow failed | Keep advisory private until a verified installable release is available and the maintainer authorizes disclosure | Treat merged code as safe and publish without a fixed package |

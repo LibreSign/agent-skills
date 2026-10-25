@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "libresign-agent-skills",
-  "version": "0.7.0",
-  "description": "Reusable workflows for contributor triage, pull request review, issue planning and implementation, CI diagnosis, maintenance audits, and upstream compatibility.",
+  "version": "0.8.0",
+  "description": "Reusable workflows for confidential security advisories, contributor triage, PR review, issue planning, implementation, CI diagnosis, maintenance and upstream compatibility.",
   "author": {
     "name": "LibreCode coop and contributors"
   },
@@ -12,8 +12,8 @@
     "com.openai": {
       "interface": {
         "displayName": "LibreSign Agent Skills",
-        "shortDescription": "Triage, plan, implement, diagnose and review changes",
-        "longDescription": "Triage contributor activity and follow-ups; review proposed code; plan and execute scoped issues; diagnose CI; audit maintenance debt; and analyze upstream compatibility.",
+        "shortDescription": "Security disclosure, triage, implement, diagnose and review",
+        "longDescription": "Coordinate private security advisories and disclosure alongside contributor triage, PR review, scoped issue planning and implementation, CI diagnosis, maintenance audits, and upstream compatibility.",
         "developerName": "LibreCode coop and contributors",
         "category": "Productivity",
         "capabilities": [

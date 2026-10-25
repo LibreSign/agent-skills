@@ -9,6 +9,7 @@ Reusable skills for LibreSign and other free software projects. Each skill guide
 
 | Skill | What it does |
 | --- | --- |
+| [Handle security advisory](skills/handle-security-advisory/SKILL.md) | Coordinates confidential GHSA triage, private-fork corrections, verified releases, disclosure approval and CVE follow-up. |
 | [Maintainer inbox](skills/maintainer-inbox/SKILL.md) | Triage contributor comments and PR follow-ups across repositories; reconcile prior work and prepare a verified read-only action queue. |
 | [Review a pull request](skills/review-pull-request/SKILL.md) | Investigates changes, tests and risks; prepares file and line-specific comments for a human to review. It does not publish a review or modify the PR on its own. |
 | [Create issues and epics](skills/create-issues-and-epics/SKILL.md) | Checks current work, drafts actionable issues and epics, and plans genuine parent and blocking links for human review before publication. |
