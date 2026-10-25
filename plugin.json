@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "libresign-agent-skills",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Reusable workflows for confidential security advisories, contributor triage, PR review, issue planning, implementation, CI diagnosis, maintenance and upstream compatibility.",
   "author": {
     "name": "LibreCode coop and contributors"
