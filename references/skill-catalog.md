@@ -34,6 +34,7 @@ A growing catalog should periodically be reviewed for consolidation. The goal is
 
 The current catalog is organized around distinct engineering outcomes:
 
+- **handle-security-advisory** — coordinate confidential vulnerability investigation, private-fork patch integration, release verification and authorized public disclosure; delegate individual code reviews and implementation to their respective skills;
 - **maintainer-inbox** — start from contributor conversations and current issue/PR follow-ups to identify who acts next; it does not judge code correctness;
 - **review-pull-request** — assess a proposed diff and prepare review findings;
 - **create-issues-and-epics** — turn product/engineering intent into actionable tracked work;
@@ -41,6 +42,8 @@ The current catalog is organized around distinct engineering outcomes:
 - **diagnose-ci-failure** — explain and fix an observed failing check;
 - **repository-health** — audit the target repository's current internal maintenance debt;
 - **upstream-compatibility** — start from upstream ecosystem change and determine whether it intersects actual target-repository usage.
+
+Security advisory handling has a separate confidentiality and public-disclosure gate that cannot be represented by ordinary implementation or PR review. Route a specific patch review to `review-pull-request`, an already-scoped fix to `execute-issue`, and release publication to the target project's canonical release process; do not invoke the advisory workflow for routine maintenance or ordinary release PRs.
 
 The maintainer inbox is separate from repository-health: human contribution follow-up and engineering maintenance signals have different starting evidence and outputs. Route individual code-level PR reviews from inbox findings to review-pull-request rather than duplicating the review workflow.
 
