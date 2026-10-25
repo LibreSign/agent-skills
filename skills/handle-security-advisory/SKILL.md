@@ -8,7 +8,7 @@ description: Coordinate the complete lifecycle of a confidential GitHub reposito
 
 # Handle a repository security advisory
 
-Before reading any report, repository, PR, CI log, or external source, read the shared [trust boundary](../../references/untrusted-input.md). Keep confidential report details inside the repository's authorized private security channel; never copy exploit payloads, embargoed findings, credentials, or private-fork metadata into public issues, PRs, tests, chat handoffs, or commits.
+Before reading external content from any report, repository, PR, CI log, or source, read the shared [trust boundary](../../references/untrusted-input.md). Keep confidential report details inside the repository's authorized private security channel; never copy exploit payloads, embargoed findings, credentials, or private-fork metadata into public issues, PRs, tests, chat handoffs, or commits.
 
 This skill **coordinates** the security-advisory lifecycle; it does not replace `review-pull-request`, `execute-issue`, `diagnose-ci-failure`, or the target project's release tooling. Read [GitHub advisory lifecycle](references/github-advisory-lifecycle.md) when using repository advisories or temporary forks. Read [disclosure and publication preflight](references/disclosure-checklist.md) when preparing text or deciding whether to disclose. Use the shared [release handoff](../../references/release-handoff.md) before reporting that an installable fix exists.
 
