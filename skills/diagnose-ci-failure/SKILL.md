@@ -24,6 +24,8 @@ When resuming a CI investigation from another chat or agent, use the [task hando
 
 ## Reproduce before editing when practical
 
+If the failing check or a proposed reproduction can modify files, databases, application configuration, queues, external services or permissions, read [stateful test safety](../../references/stateful-test-safety.md) before running it. Verify isolated mutation targets and cleanup even for pre-existing tests. If that cannot be established, analyze the CI evidence and describe a safe reproduction plan instead of executing a potentially destructive test.
+
 Use the repository's documented local/devcontainer/container path and reproduce the narrow failing command or matrix case first.
 
 If local reproduction is impractical, collect enough CI evidence to state that limitation explicitly. Do not invent a local result.

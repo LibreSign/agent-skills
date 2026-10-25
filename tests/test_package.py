@@ -188,7 +188,11 @@ class PackageTests(unittest.TestCase):
         self.assertIn("teardown/finally", safety)
         self.assertIn("shared Nextcloud", safety)
         self.assertIn("stale plan", release.lower())
-        for name in ("execute-issue", "review-pull-request"):
+        finalized = release.split("3. **Finalized:**", 1)[1].split("4. **Published", 1)[0]
+        publication = release.split("4. **Published", 1)[1].split("5. **Reporter", 1)[0]
+        self.assertNotIn("artifact validation", finalized.lower())
+        self.assertIn("publisher workflow", publication)
+        for name in ("execute-issue", "review-pull-request", "diagnose-ci-failure"):
             self.assertIn("references/stateful-test-safety.md", (ROOT / "skills" / name / "SKILL.md").read_text())
         inbox = (ROOT / "skills/maintainer-inbox/SKILL.md").read_text()
         self.assertIn("references/release-handoff.md", inbox)

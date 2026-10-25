@@ -11,9 +11,9 @@ Distinguish the following states with evidence and links:
 
 1. **Merged:** the required code commit is in the correct branch; verify which supported branches contain it and any open backports.
 2. **Prepared:** a release plan and preparation PR exist for a pinned planning base. A draft PR or one green DCO check is not an approved release.
-3. **Finalized:** the project's release engine successfully performed finalization, required branch synchronization and artifact validation on the intended commit.
-4. **Published:** the release is actually published in the intended distribution channel, with the required artifact/signing result verified. Public indexes may lag; do not replace the publisher signal with a cached listing.
-5. **Reporter informed:** the user has received a correct version or availability statement, distinct from closing an issue.
+3. **Finalized:** after the preparation PR is reviewed and merged, the release engine revalidates the merged state, records the exact released commit, updates milestones and initiates the configured changelog-synchronization PRs. This does not validate or publish the package.
+4. **Published and verified:** after a maintainer publishes the release draft, verify the configured publisher workflow succeeded and the expected release artifact exists. Package building, signing and distribution checks belong here, not to finalization. Public indexes may lag; a published GitHub Release alone does not prove availability in another distribution channel.
+5. **Reporter informed:** communicate the verified status independently of publication. Before a release, identify integrated branches without claiming an installable fix; after publication is verified, identify the published version. Closing an issue is a separate decision.
 
 A stale plan is not repaired by manually modifying generated preparation metadata. Re-run the canonical planning process only when authorized, and present any human merge/publication gates separately. Report unresolved checks, supported-version limits and who owns the next step.
 
