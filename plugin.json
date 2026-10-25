@@ -22,12 +22,7 @@
         "defaultPrompt": [
           "Audit recent external contributor activity and tell me what requires a maintainer response: ",
           "Review this pull request and prepare comments for me to check: ",
-          "Re-review this pull request after the latest changes: ",
-          "Draft issues and an epic for this project, including real dependencies: ",
-          "Implement this already-scoped issue and prepare a reviewable pull request: ",
-          "Diagnose this failing CI run and fix the causal problem: ",
-          "Audit this repository for actionable maintenance debt and prepare a report: ",
-          "Check relevant upstream changes against this repository and prepare a compatibility report: "
+          "Implement this already-scoped issue and prepare a reviewable pull request: "
         ]
       }
     }

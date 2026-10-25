@@ -21,4 +21,6 @@ Reusable skills for LibreSign and other free software projects. Each skill guide
 
 Add this repository as a marketplace with `codex plugin marketplace add LibreSign/agent-skills` and install **LibreSign Agent Skills** in ChatGPT or Codex. Select a skill and provide a PR link, diff, issue context, failing workflow, repository-health question, or upstream compatibility question. Repository access depends on the tools connected to your environment.
 
+The interface shows three representative starter prompts; every workflow in the table remains available. Other examples include "Re-review this pull request after the latest changes", "Draft issues and an epic with dependencies", "Diagnose a failing CI run", "Audit repository maintenance debt", and "Check upstream compatibility".
+
 To contribute a skill or adapt a workflow to another project, see [CONTRIBUTING.md](CONTRIBUTING.md) and the [skill catalog design](references/skill-catalog.md).

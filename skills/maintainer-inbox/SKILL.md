@@ -14,11 +14,9 @@ This is a read-only triage workflow. Its outcome is a verified queue of human de
 
 ## Establish coverage
 
-1. Agree on repositories, excluded repositories, activity window, time zone and as-of time. If the request says "everything", enumerate the accessible repositories first and disclose private/inaccessible or unscanned repositories.
-2. Retrieve complete, paginated issue and PR activity, including issue comments on PRs, inline review comments, review decisions and unresolved threads. Distinguish new issues/PRs from new comments on old items. A resource's `updated_at` is not a comment timestamp.
-3. Read enough timeline to reconstruct each candidate's actual question, prior maintainer replies, related PRs, linked issues, fixes and releases. Do not assume that the last external comment is the only unanswered request.
-4. Verify identity conservatively. `author_association` and public organization membership are imperfect signals; do not infer someone's employer from a GitHub role. Separate bots and explicitly disclosed automated replies from confirmed human commitments. Mark identity uncertainty rather than silently changing inclusion criteria.
-5. Reconcile prior reported items against live repository state. A closed issue, green CI or merged PR does not by itself establish that a user question was answered or that a fix was released.
+1. Derive repositories, exclusions, activity window and time zone from the request and available context. Choose and disclose reasonable defaults when they are not specified; ask only if a missing detail materially prevents a reliable audit. For an organization-wide request, enumerate accessible repositories and report coverage limits.
+2. Follow [activity collection and decisions](references/triage-evidence.md) for pagination, issue and PR timelines, review threads, contributor identity and the actual unresolved questions. Report incomplete evidence rather than presenting discovery timestamps or GitHub role labels as proof.
+3. Reconcile previous audits with current linked PRs, reviews, CI, merged fixes and releases. A new comment may change the next action without changing the PR head SHA.
 
 ## Decide the next owner
 

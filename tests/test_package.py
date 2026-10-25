@@ -167,13 +167,26 @@ class PackageTests(unittest.TestCase):
         self.assertIn("use repository-health for that", upstream)
 
 
+    def test_starter_prompts_and_catalog_preserve_skill_routes(self):
+        manifest = json.loads((ROOT / "plugin.json").read_text())
+        prompts = manifest["extensions"]["com.openai"]["interface"]["defaultPrompt"]
+        self.assertGreater(len(prompts), 0)
+        self.assertLessEqual(len(prompts), 3)
+        self.assertEqual(len(prompts), len(set(prompts)))
+        self.assertTrue(all(isinstance(p, str) and 0 < len(p) <= 128 for p in prompts))
+        readme = (ROOT / "README.md").read_text()
+        for skill in (ROOT / "skills").glob("*/SKILL.md"):
+            self.assertIn(f"skills/{skill.parent.name}/SKILL.md", readme)
+        self.assertIn("Re-review this pull request", readme)
+        self.assertIn("Audit repository maintenance debt", readme)
+
     def test_inbox_has_distinct_read_only_handoff_workflow(self):
         inbox = (ROOT / "skills/maintainer-inbox/SKILL.md").read_text()
         collection = (ROOT / "skills/maintainer-inbox/references/triage-evidence.md").read_text()
         handoff = (ROOT / "references/task-handoff.md").read_text()
         catalog = (ROOT / "references/skill-catalog.md").read_text()
         self.assertIn("read-only triage workflow", inbox)
-        self.assertIn("unresolved threads", inbox)
+        self.assertIn("unresolved threads", collection)
         self.assertIn("Do not post comments", inbox)
         self.assertIn("pagination", collection)
         self.assertIn("GitHub", collection)
