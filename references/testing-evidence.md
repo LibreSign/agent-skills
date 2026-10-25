@@ -15,6 +15,8 @@ Use these principles when a code review, issue or CI diagnosis raises a possible
 
 A confirmed breach of a verified contract can also be demonstrated with other strong evidence (for example, a reproducible execution trace). Do not make a newly committed failing test an unconditional prerequisite to reporting security or data-integrity risks. Keep sensitive reproductions out of public comments.
 
+For tests with persistent/global mutation or destructive cleanup, read [stateful test safety](stateful-test-safety.md) before running them or declaring the fixture isolated.
+
 ## Use parameterization deliberately
 
 - Prefer named independent cases for inputs that share the **same** setup, action, contract and expectation. Examples: PHPUnit `#[DataProvider]`, Vitest `it.each`, and an existing project's scenario outline. Each dataset should identify the exact failing case.

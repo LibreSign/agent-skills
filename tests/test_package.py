@@ -182,6 +182,17 @@ class PackageTests(unittest.TestCase):
         for name in ("review-pull-request", "execute-issue", "diagnose-ci-failure"):
             self.assertIn("references/task-handoff.md", (ROOT / "skills" / name / "SKILL.md").read_text())
 
+    def test_stateful_test_and_release_guidance_are_linked(self):
+        safety = (ROOT / "references/stateful-test-safety.md").read_text()
+        release = (ROOT / "references/release-handoff.md").read_text()
+        self.assertIn("teardown/finally", safety)
+        self.assertIn("shared Nextcloud", safety)
+        self.assertIn("stale plan", release.lower())
+        for name in ("execute-issue", "review-pull-request"):
+            self.assertIn("references/stateful-test-safety.md", (ROOT / "skills" / name / "SKILL.md").read_text())
+        inbox = (ROOT / "skills/maintainer-inbox/SKILL.md").read_text()
+        self.assertIn("references/release-handoff.md", inbox)
+
     def test_orchestration_pilot_reference_and_runner(self):
         skill = (ROOT / "skills/execute-issue/SKILL.md").read_text()
         reference = (ROOT / "skills/execute-issue/references/orchestration-pilot.md").read_text()

@@ -32,6 +32,8 @@ Classify each actionable item by its **next required action**:
 
 Prefer a short, precise follow-up over redoing an implementation investigation. Hand code-level merge decisions to `review-pull-request`, failing checks to `diagnose-ci-failure`, and issue restructuring to `create-issues-and-epics`. Never turn an audit into a code-writing or issue-publication task without a separate authorized handoff.
 
+If an item is blocked on a release, read [release handoff](../../references/release-handoff.md) and distinguish merged, prepared, finalized, published and reporter-notified states.
+
 ## Report
 
 State the as-of time, exact repositories and dates covered, incomplete pages or unavailable data, and how external contributors were identified. Order only actionable findings by technical/user impact, wait time and whether maintainer action can unblock a contributor. For each give the direct comment or PR link, verified question, last meaningful response, next owner, recommended action, and a concise proposed reply only if useful.

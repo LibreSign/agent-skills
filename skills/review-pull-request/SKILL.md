@@ -12,6 +12,8 @@ Review the change independently, including when the user proposes a finding or a
 
 For a review resumed after another chat or earlier reviewer response, consult the [task handoff](../../references/task-handoff.md) if available. Compare its recorded head, decisions and findings with live GitHub state; never treat a checkpoint or green CI as a substitute for the current review decision.
 
+For PR tests that write application configuration, databases, filesystem paths, or other persistent state, read [stateful test safety](../../references/stateful-test-safety.md) and examine fixture cleanup and test runtime safety.
+
 ## Investigation
 
 1. Identify the repository, base and head revisions, intended behavior, linked issue and acceptance criteria, changed files, dependencies on other PRs, commit messages and prior PR discussion. For LibreSign PRs, treat a draft as work in progress and normally avoid a full merge-readiness review until it is marked ready for review; perform an early review when the user explicitly asks for one or when they want feedback on direction before the PR is ready. Use the discussion and commit history to understand why the author chose this approach and which alternatives were considered; verify those claims against the current code. Establish what this PR actually changes, including user-visible behavior and relevant documentation. On a repeat review, compare the new head with the previously reviewed head; check each earlier finding again. State the head SHA or explain why it is unavailable.

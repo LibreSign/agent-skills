@@ -59,6 +59,8 @@ Do not make self-hosted execution a mandatory transfer hop. Prefer an isolated b
 - Observe exit status and relevant output before claiming a command passed.
 - Run untrusted project code without unnecessary repository-write credentials or secrets.
 
+When a proposed test can modify shared or persistent resources, read [stateful test safety](../../references/stateful-test-safety.md) and verify the runtime and cleanup boundary before running it.
+
 ## Implement narrowly
 
 1. Make the smallest coherent change satisfying the verified contract.
