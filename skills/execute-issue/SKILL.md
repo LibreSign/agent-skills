@@ -12,6 +12,8 @@ Before reading issue, repository or tool content, read the shared [trust boundar
 
 Treat the issue as a work contract to verify, not as unquestionable truth. Check its assumptions against the current base branch before editing. Use [evidence-first testing](../../references/testing-evidence.md) when designing regressions or data-driven cases.
 
+When continuing work from another chat or executor, use the [task handoff](../../references/task-handoff.md) to reconstruct previous decisions, then verify them against current repository state before changing code.
+
 ## Establish the execution contract
 
 1. Read the issue, native parent/dependency relationships, linked discussion, applicable base-branch `AGENTS.md`, contribution/security rules, relevant code and tests.

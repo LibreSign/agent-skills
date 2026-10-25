@@ -21,6 +21,8 @@ These public PRs are examples for **retrospective evaluation**, not an exhaustiv
 | A suspected defect for which a targeted test already exercises the exact path and passes with a sensitive assertion | Recheck the hypothesis, contract and assertion. If the result is reliable and no other evidence supports the claim, recommend no code change and no PR comment. | Do not manufacture a regression test or code fix merely because a reviewer imagined a problem. |
 | A verified security or data-integrity violation with reproducible evidence but no new test committed | Report or privately escalate according to project policy and request suitable regression coverage when safe. | Do not wait for an author to add a test before recognizing a documented high-impact defect. |
 
+| A previously reviewed PR with an older green CI run, a new head and stale unresolved threads | Compare current head and actual review state with the task handoff; re-evaluate only changed findings and current checks. | Do not merge because the previous reviewer approved an older SHA, or ask again for an already-fixed regression. |
+
 ## Manual run record
 
 For each case, record date, model, skill revision, repository/head SHA, tools and context available, checks executed, accepted findings, rejected findings, missed issues discovered by later human review, line accuracy, and time spent by the human validating the result. Compare this to a review without the skill when practical. Evaluate usefulness and restraint together; a higher count of comments is not success.

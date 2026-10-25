@@ -167,6 +167,21 @@ class PackageTests(unittest.TestCase):
         self.assertIn("use repository-health for that", upstream)
 
 
+    def test_inbox_has_distinct_read_only_handoff_workflow(self):
+        inbox = (ROOT / "skills/maintainer-inbox/SKILL.md").read_text()
+        collection = (ROOT / "skills/maintainer-inbox/references/triage-evidence.md").read_text()
+        handoff = (ROOT / "references/task-handoff.md").read_text()
+        catalog = (ROOT / "references/skill-catalog.md").read_text()
+        self.assertIn("read-only triage workflow", inbox)
+        self.assertIn("unresolved threads", inbox)
+        self.assertIn("Do not post comments", inbox)
+        self.assertIn("pagination", collection)
+        self.assertIn("GitHub", collection)
+        self.assertIn("head SHAs", handoff)
+        self.assertIn("maintainer-inbox", catalog)
+        for name in ("review-pull-request", "execute-issue", "diagnose-ci-failure"):
+            self.assertIn("references/task-handoff.md", (ROOT / "skills" / name / "SKILL.md").read_text())
+
     def test_orchestration_pilot_reference_and_runner(self):
         skill = (ROOT / "skills/execute-issue/SKILL.md").read_text()
         reference = (ROOT / "skills/execute-issue/references/orchestration-pilot.md").read_text()

@@ -12,6 +12,8 @@ Before reading external CI, pull-request, repository or tool content, read the s
 
 Treat a green rerun as evidence, not proof of flakiness. The goal is to identify the causal failure and produce a defensible fix, not merely make the check green once. When adding focused cases, follow [evidence-first testing](../../references/testing-evidence.md).
 
+When resuming a CI investigation from another chat or agent, use the [task handoff](../../references/task-handoff.md) to recover previously tested hypotheses and command results, but confirm the current run SHA and logs before recommending an action.
+
 ## Establish the failing surface
 
 1. Inspect the exact run, job, step, annotations, logs, commit SHA, matrix values and changed files.
