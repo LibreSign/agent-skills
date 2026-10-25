@@ -53,6 +53,29 @@ class PackageTests(unittest.TestCase):
                 if "://" not in target and not target.startswith("#"):
                     self.assertTrue((file.parent / target.split("#", 1)[0]).is_file(), (file, target))
 
+    def test_plugin_distribution_warns_about_incomplete_standalone_skill_exports(self):
+        readme = (ROOT / "README.md").read_text()
+        contributing = (ROOT / "CONTRIBUTING.md").read_text()
+        self.assertIn("Do not install a standalone `skill.zip`", readme)
+        self.assertIn("codex plugin marketplace upgrade", readme)
+        self.assertIn("separate, manually maintained snapshot", readme)
+        self.assertIn("Only then remove", readme)
+        self.assertIn("Do not attach or recommend an isolated `skill.zip`", contributing)
+
+        # A per-skill ZIP omits repository-level dependencies unless they are
+        # explicitly bundled and paths are rewritten.
+        shared_references = set()
+        for skill in (ROOT / "skills").glob("*/SKILL.md"):
+            for link in re.findall(r"\]\(([^)]+)\)", skill.read_text()):
+                target = link.split("#", 1)[0]
+                if not target or "://" in target:
+                    continue
+                resolved = (skill.parent / target).resolve()
+                if not resolved.is_relative_to(skill.parent.resolve()):
+                    shared_references.add(resolved)
+        self.assertIn((ROOT / "references/untrusted-input.md").resolve(), shared_references)
+        self.assertIn((ROOT / "references/release-handoff.md").resolve(), shared_references)
+
     def test_review_publication_requires_express_authorization(self):
         text = (ROOT / "skills/review-pull-request/SKILL.md").read_text()
         self.assertIn("Do not post comments or reviews", text)
