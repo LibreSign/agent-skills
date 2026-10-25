@@ -167,6 +167,49 @@ class PackageTests(unittest.TestCase):
         self.assertIn("use repository-health for that", upstream)
 
 
+    def test_starter_prompts_and_catalog_preserve_skill_routes(self):
+        manifest = json.loads((ROOT / "plugin.json").read_text())
+        prompts = manifest["extensions"]["com.openai"]["interface"]["defaultPrompt"]
+        self.assertGreater(len(prompts), 0)
+        self.assertLessEqual(len(prompts), 3)
+        self.assertEqual(len(prompts), len(set(prompts)))
+        self.assertTrue(all(isinstance(p, str) and 0 < len(p) <= 128 for p in prompts))
+        readme = (ROOT / "README.md").read_text()
+        for skill in (ROOT / "skills").glob("*/SKILL.md"):
+            self.assertIn(f"skills/{skill.parent.name}/SKILL.md", readme)
+        self.assertIn("Re-review this pull request", readme)
+        self.assertIn("Audit repository maintenance debt", readme)
+
+    def test_inbox_has_distinct_read_only_handoff_workflow(self):
+        inbox = (ROOT / "skills/maintainer-inbox/SKILL.md").read_text()
+        collection = (ROOT / "skills/maintainer-inbox/references/triage-evidence.md").read_text()
+        handoff = (ROOT / "references/task-handoff.md").read_text()
+        catalog = (ROOT / "references/skill-catalog.md").read_text()
+        self.assertIn("read-only triage workflow", inbox)
+        self.assertIn("unresolved threads", collection)
+        self.assertIn("Do not post comments", inbox)
+        self.assertIn("pagination", collection)
+        self.assertIn("GitHub", collection)
+        self.assertIn("head SHAs", handoff)
+        self.assertIn("maintainer-inbox", catalog)
+        for name in ("review-pull-request", "execute-issue", "diagnose-ci-failure"):
+            self.assertIn("references/task-handoff.md", (ROOT / "skills" / name / "SKILL.md").read_text())
+
+    def test_stateful_test_and_release_guidance_are_linked(self):
+        safety = (ROOT / "references/stateful-test-safety.md").read_text()
+        release = (ROOT / "references/release-handoff.md").read_text()
+        self.assertIn("teardown/finally", safety)
+        self.assertIn("shared Nextcloud", safety)
+        self.assertIn("stale plan", release.lower())
+        finalized = release.split("3. **Finalized:**", 1)[1].split("4. **Published", 1)[0]
+        publication = release.split("4. **Published", 1)[1].split("5. **Reporter", 1)[0]
+        self.assertNotIn("artifact validation", finalized.lower())
+        self.assertIn("publisher workflow", publication)
+        for name in ("execute-issue", "review-pull-request", "diagnose-ci-failure"):
+            self.assertIn("references/stateful-test-safety.md", (ROOT / "skills" / name / "SKILL.md").read_text())
+        inbox = (ROOT / "skills/maintainer-inbox/SKILL.md").read_text()
+        self.assertIn("references/release-handoff.md", inbox)
+
     def test_orchestration_pilot_reference_and_runner(self):
         skill = (ROOT / "skills/execute-issue/SKILL.md").read_text()
         reference = (ROOT / "skills/execute-issue/references/orchestration-pilot.md").read_text()

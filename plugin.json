@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "libresign-agent-skills",
-  "version": "0.6.1",
-  "description": "Reusable workflows for reviewing pull requests, planning and executing issues, coordinating engineering investigation, diagnosing CI failures, auditing repository health, and analyzing upstream compatibility in free software projects.",
+  "version": "0.7.0",
+  "description": "Reusable workflows for contributor triage, pull request review, issue planning and implementation, CI diagnosis, maintenance audits, and upstream compatibility.",
   "author": {
     "name": "LibreCode coop and contributors"
   },
@@ -12,21 +12,17 @@
     "com.openai": {
       "interface": {
         "displayName": "LibreSign Agent Skills",
-        "shortDescription": "Plan, implement, diagnose and review software changes",
-        "longDescription": "Investigate and review code changes; plan and execute issues; coordinate temporary independent investigation; diagnose CI; audit repository health; and filter upstream compatibility changes against real project usage.",
+        "shortDescription": "Triage, plan, implement, diagnose and review changes",
+        "longDescription": "Triage contributor activity and follow-ups; review proposed code; plan and execute scoped issues; diagnose CI; audit maintenance debt; and analyze upstream compatibility.",
         "developerName": "LibreCode coop and contributors",
         "category": "Productivity",
         "capabilities": [
           "Read"
         ],
         "defaultPrompt": [
+          "Audit recent external contributor activity and tell me what requires a maintainer response: ",
           "Review this pull request and prepare comments for me to check: ",
-          "Re-review this pull request after the latest changes: ",
-          "Draft issues and an epic for this project, including real dependencies: ",
-          "Implement this already-scoped issue and prepare a reviewable pull request: ",
-          "Diagnose this failing CI run and fix the causal problem: ",
-          "Audit this repository for actionable maintenance debt and prepare a report: ",
-          "Check relevant upstream changes against this repository and prepare a compatibility report: "
+          "Implement this already-scoped issue and prepare a reviewable pull request: "
         ]
       }
     }

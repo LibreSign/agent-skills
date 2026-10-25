@@ -34,12 +34,15 @@ A growing catalog should periodically be reviewed for consolidation. The goal is
 
 The current catalog is organized around distinct engineering outcomes:
 
+- **maintainer-inbox** — start from contributor conversations and current issue/PR follow-ups to identify who acts next; it does not judge code correctness;
 - **review-pull-request** — assess a proposed diff and prepare review findings;
 - **create-issues-and-epics** — turn product/engineering intent into actionable tracked work;
 - **execute-issue** — implement already-scoped work and carry it through validation/handoff;
 - **diagnose-ci-failure** — explain and fix an observed failing check;
 - **repository-health** — audit the target repository's current internal maintenance debt;
 - **upstream-compatibility** — start from upstream ecosystem change and determine whether it intersects actual target-repository usage.
+
+The maintainer inbox is separate from repository-health: human contribution follow-up and engineering maintenance signals have different starting evidence and outputs. Route individual code-level PR reviews from inbox findings to review-pull-request rather than duplicating the review workflow.
 
 The last two intentionally remain separate only because their starting evidence differs: repository-health starts from the local repository, while upstream-compatibility starts from an upstream change. If real usage shows frequent ambiguous routing between them, consolidate them instead of adding more exclusions.
 
