@@ -7,7 +7,7 @@
 
 - Enumerate accessible repositories and retain explicit exclusions. Set an absolute date boundary and record when the scan ran.
 - Use paginated issue/PR lists or search for candidate discovery, but collect issue comments, PR conversation comments, inline review comments and review submissions from their actual timelines. Search results and `updated_at` alone do not establish that a new comment exists.
-- Some review threads are unresolved even when an author replies elsewhere; inspect the current review decision and thread resolution status before calling a PR ready.
+- Inspect unresolved threads alongside review decisions; a reply elsewhere may not resolve a blocking review.
 - For long-running repos, use an incremental watermark with a small overlap, deduplicate by stable comment/review IDs, and re-read relevant older context. Do not silently stop at the API's first 100 items or GitHub Search's result limit.
 - Pin the current head SHA when reporting a PR correction. Compare with the previously reviewed SHA, then check current CI and reviews; an older green run does not validate a new head.
 - Cross-check comments against linked PRs, merges, releases and documented blockers. A merged backport is not a published release, and a reviewer comment need not require a new public issue response.
