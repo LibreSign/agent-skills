@@ -1,0 +1,7 @@
+{
+  "name": "libresign-agent-skills",
+  "description": "Reusable workflows for confidential security advisories, contributor triage, PR review, issue planning, implementation, CI diagnosis, maintenance and upstream compatibility.",
+  "author": {
+    "name": "LibreCode coop and contributors"
+  }
+}

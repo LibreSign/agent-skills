@@ -1,0 +1,15 @@
+{
+  "name": "libresign-agent-skills",
+  "description": "LibreSign agent skills for free software engineering workflows.",
+  "owner": {
+    "name": "LibreCode coop and contributors"
+  },
+  "plugins": [
+    {
+      "name": "libresign-agent-skills",
+      "source": "./",
+      "description": "Reusable workflows for confidential security advisories, contributor triage, PR review, issue planning, implementation, CI diagnosis, maintenance and upstream compatibility.",
+      "category": "productivity"
+    }
+  ]
+}

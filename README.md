@@ -30,6 +30,8 @@ codex plugin marketplace list
 codex plugin marketplace upgrade
 ```
 
+For Claude Code, run `/plugin marketplace add LibreSign/agent-skills` followed by `/plugin install libresign-agent-skills@libresign-agent-skills`. Install the complete repository plugin so that shared `references/` remain accessible. The Claude manifests intentionally omit `version`, so installations can follow repository updates rather than a pinned plugin version. Verify updates in the installed client.
+
 Install **LibreSign Agent Skills** from that marketplace in the client's Plugins Directory. `marketplace upgrade` refreshes marketplace sources; **it does not guarantee that an already installed cached plugin is refreshed or that ChatGPT web receives the same installation**. Refresh or reinstall the installed plugin through the supported client interface if needed, restart the session, and verify the installed `plugin.json` version and access to the expected skills and their shared references. The installed copy can lag the Git repository even after a merge.
 
 **Migrating from a ZIP upload:** first confirm that the *complete* Git-backed plugin works in the same client. Only then remove the separately uploaded `handle-security-advisory` skill from **Plugins → Skills → Installed**, using the actions available in that client. Do not remove the Git-backed plugin or delete a standalone skill when it is the only accessible installation; arrange a supported plugin installation first. If a standalone distribution is genuinely required, it must be separately designed, fully self-contained, validated, versioned, and maintained as a different delivery channel.

@@ -39,6 +39,22 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(entry["source"], {"source": "local", "path": "./"})
         self.assertEqual(entry["policy"]["installation"], "AVAILABLE")
 
+    def test_claude_manifest_and_marketplace_match_the_shared_manifest(self):
+        manifest = json.loads((ROOT / "plugin.json").read_text())
+        claude_manifest = json.loads((ROOT / ".claude-plugin/plugin.json").read_text())
+        claude_marketplace = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text())
+        for field in ("name", "description", "author"):
+            self.assertEqual(claude_manifest[field], manifest[field], field)
+        self.assertEqual(claude_marketplace["name"], manifest["name"])
+        self.assertTrue(claude_marketplace["owner"]["name"])
+        self.assertEqual(len(claude_marketplace["plugins"]), 1)
+        entry = claude_marketplace["plugins"][0]
+        self.assertEqual(entry["name"], manifest["name"])
+        self.assertEqual(entry["source"], "./")
+        self.assertEqual(entry["description"], manifest["description"])
+        self.assertNotIn("version", claude_manifest)
+        self.assertNotIn("version", entry)
+
     def test_skill_activation_metadata_and_local_links(self):
         skills = list((ROOT / "skills").glob("*/SKILL.md"))
         self.assertTrue(skills)

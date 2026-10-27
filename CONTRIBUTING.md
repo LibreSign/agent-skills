@@ -17,7 +17,7 @@ If a standalone skill is explicitly required, treat it as a separate distributio
 
 Run `python3 -m unittest discover -s tests -v` and `reuse lint` locally. The GitHub Actions workflow runs both on pull requests and pushes to `main`. `LICENSE` contains the full text at the project root; REUSE requires the corresponding text in `LICENSES/AGPL-3.0-or-later.txt`. Give new files SPDX copyright and license metadata, or add a narrowly scoped entry to `REUSE.toml` for formats without comments. Do not add a generic catch-all annotation that conceals unlicensed files.
 
-These checks catch broken package paths, invalid metadata, missing license information, a missing link to the [shared trust boundary](references/untrusted-input.md), and accidental removal of the human authorization rule. They do not establish that a finding is accurate, that a line anchor matches a live PR, that the model obeys the trust boundary, or that the plugin triggers in a particular ChatGPT environment.
+These checks catch broken package paths, invalid metadata, missing license information, a missing link to the [shared trust boundary](references/untrusted-input.md), and accidental removal of the human authorization rule. They do not establish that a finding is accurate, that a line anchor matches a live PR, that the model obeys the trust boundary, or that the plugin triggers in a particular ChatGPT, Codex or Claude Code environment. When changing `.claude-plugin/`, also run `claude plugin validate .` if the Claude Code CLI is available. Keep `version` out of the Claude Code manifest and marketplace entry so installed copies follow the repository commit instead of staying on a pinned release.
 
 ## Evaluate behavior
 
