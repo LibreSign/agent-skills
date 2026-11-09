@@ -13,21 +13,21 @@ Example layout (the content and path are illustrative, not a finding):
 File: `src/Service/Example.php`, line 42 of the current diff.  
 Evidence: The new branch can receive a missing record and calls a method on it; the repository contract has not yet been verified.
 
-```markdown
+**Proposed GitHub comment (copy-ready prose):**
+
 If `find_user` can return null for a missing ID, this dereference fails before the request can be handled. Please cover that case with a regression test and handle the missing record according to the service's error contract.
-```
 
-When the project contract and exact replacement are verified, a small suggestion can be easier for the author to apply. Example: select only the current changed line 42, whose content is `    $label = 'Submit';`; the example replacement preserves its indentation. Use **four backticks for the outer Markdown fence** so that the entire comment, including the inner GitHub suggestion, is copied with one button:
+When the project contract and exact replacement are verified, a small suggestion can be easier for the author to apply. Example: select only the current changed line 42, whose content is `    $label = 'Submit';`; the replacement preserves its indentation. Show the explanation as wrapping prose followed by the short `suggestion` code fence. Both belong to one GitHub comment; do not wrap the entire comment in an outer code fence:
 
-````markdown
+**Proposed GitHub comment (copy the explanation and suggestion together):**
+
 The button now submits a cancellation request. The current label says “Submit”, which does not tell the user what will happen. This wording matches the action described in the adjacent UI text.
 
 ```suggestion
     $label = 'Cancel request';
 ```
-````
 
-The example is illustrative, not a recommended change for a real PR. Verify the exact target range and replacement against the current head; do not put the file, line, priority, evidence or review-only notes inside the copyable block. For larger or uncertain fixes, explain the behavior and the expected correction in a single `markdown` block without a `suggestion`.
+The example is illustrative, not a recommended change for a real PR. Verify the exact target range and replacement against the current head; keep file, line, priority and evidence outside the copy-ready text. For uncertain or larger fixes, use a wrapping explanation without a suggestion. Prefer copyable writing blocks when supported; do not sacrifice readability for a code-block copy button. For a confirmed behavioral defect, request a feasible focused regression test; for a hypothesis, request a discriminating test with a positive control before demanding production changes.
 
 **Human decision:** Check the proposed text and the current line before posting. No review action has been submitted.
 
