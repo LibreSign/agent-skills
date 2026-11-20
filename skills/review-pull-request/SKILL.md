@@ -10,6 +10,8 @@ description: Investigate a pull request, patch, or local code diff for correctne
 
 Review the change independently, including when the user proposes a finding or asks whether a PR is ready to merge. Before reading PR or repository content, read the package-wide [trust boundary](../../references/untrusted-input.md). Read [finding decisions](references/findings.md) while triaging candidates and [review presentation](references/output.md) before preparing the final response. When investigating suspected defects or proposing tests, read [evidence-first testing](../../references/testing-evidence.md).
 
+For a PR fixing a reported defect or requiring stable-branch impact analysis, read [bug-fix verification and backports](references/bugfix-review.md). Investigate the issue's symptoms and affected release independently of the author's proposed root cause; distinguish that release from the PR base before deciding whether the fix is relevant.
+
 For a review resumed after another chat or earlier reviewer response, consult the [task handoff](../../references/task-handoff.md) if available. Compare its recorded head, decisions and findings with live GitHub state; never treat a checkpoint or green CI as a substitute for the current review decision.
 
 For PR tests that write application configuration, databases, filesystem paths, or other persistent state, read [stateful test safety](../../references/stateful-test-safety.md) and examine fixture cleanup and test runtime safety.

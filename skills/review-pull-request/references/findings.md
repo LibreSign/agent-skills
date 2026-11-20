@@ -5,6 +5,8 @@
 
 ## Evidence threshold
 
+For a reported-bug fix, first distinguish the issue's observed failure, its proposed explanation, behavior on the PR base, and the patch's actual effect. A defect seen on a stable branch may have a different cause or already be prevented on main. Before upgrading a suspected post-patch problem to a blocking finding, trace whether the proposed input or partial state is reachable, whether an existing safeguard handles it, and what counterexample would disprove it. A concrete code-level possibility is not automatically a confirmed runtime failure.
+
 An issue is ready for a firm comment when the review can describe the condition, the affected execution path or contract, the consequence, and why the change introduces or exposes it. Check upstream contracts and local policy before requiring a particular tool, version, browser test or coding style. For uncertain cases, ask for a focused reproduction or targeted test and say what outcome would change the recommendation. Do not turn a possibility into a stated fact.
 
 Tests are also code to review. Inspect whether a test would fail for the wrong behavior and whether it asserts an observable result rather than coupling to incidental call counts. Mutation scores and coverage percentages are clues, not goals that justify brittle tests. End-to-end coverage should follow important user or system workflows, not mirror source filenames. A passing CI job does not prove that a missing scenario is covered; an intermittent failure must be investigated before blaming the PR.
