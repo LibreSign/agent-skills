@@ -3,7 +3,11 @@
 
 # Review presentation
 
-Keep the verdict short. Include the exact PR head SHA when available, a statement of what was inspected versus executed, and whether any recommended comment blocks merging. Where the project's review UI only supports changed lines, anchor to a changed line in the current diff. Do not invent a line number from an outdated version.
+Keep the verdict short. Include the exact PR head SHA when available, a statement of what was inspected versus executed, and whether any recommended comment blocks merging. For a reported bug, distinguish the original symptoms from a proven root cause, and distinguish the reported release from the PR base. If backports are requested, show a compact branch/version/evidence/decision matrix. Separate technical findings from CI authorization, DCO and other administrative merge gates.
+
+When the author can act on a test request, specify its test level, reachable setup, expected observable result and control. Offer named DataProvider or parameterized cases when they make the request executable. Do not bury the expected behavior in a generic request for more tests.
+
+Where the project's review UI only supports changed lines, anchor to a changed line in the current diff. Do not invent a line number from an outdated version.
 
 Example layout (the content and path are illustrative, not a finding):
 

@@ -92,6 +92,17 @@ class PackageTests(unittest.TestCase):
         self.assertIn((ROOT / "references/untrusted-input.md").resolve(), shared_references)
         self.assertIn((ROOT / "references/release-handoff.md").resolve(), shared_references)
 
+    def test_bugfix_review_requires_release_specific_evidence(self):
+        skill = (ROOT / "skills/review-pull-request/SKILL.md").read_text()
+        guide = (ROOT / "skills/review-pull-request/references/bugfix-review.md").read_text()
+        evaluation = (ROOT / "evaluations/review-pull-request.md").read_text()
+        self.assertIn("references/bugfix-review.md", skill)
+        self.assertIn("reported release", guide)
+        self.assertIn("base branch", guide)
+        self.assertIn("verified affected", guide)
+        self.assertIn("action_required", guide)
+        self.assertIn("LibreSign/libresign#9539", evaluation)
+
     def test_review_publication_requires_express_authorization(self):
         text = (ROOT / "skills/review-pull-request/SKILL.md").read_text()
         self.assertIn("Do not post comments or reviews", text)
